@@ -41,7 +41,7 @@
 					</a>
 				</li>
 				<li class="h-full">
-					<a class="" sveltekit:prefetch href="/about">
+					<a class="" sveltekit:prefetch href="/docs">
 						<div
 							class="h-full px-3 flex items-center border-t pb-0.5 border-amber-500 border-opacity-0 hover:border-opacity-100"
 							class:border-opacity-100={$page.path === '/docs'}

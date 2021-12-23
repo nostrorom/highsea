@@ -171,10 +171,6 @@ const generateColor = ({ bottomColor, topColor }, ratio, newHue, newName) => {
 	let refLevels = [50, 100, 200, 300, 400, 500, 600, 700, 800, 900];
 	let newColor = { id: newName, levels: [], refHue: newHue };
 
-	if (topColor.id === 'red') {
-		console.log('HOUSTON');
-	}
-
 	const interpolate = (bottomValue, topValue, ratio) => {
 		return Math.round(bottomValue + (topValue - bottomValue) * ratio);
 	};
