@@ -3,7 +3,7 @@
 </script>
 
 <script>
-	import { olors } from '$lib/stores/converter';
+	import { colors } from '$lib/stores/colors';
 	import Palette from '$lib/Palette.svelte';
 </script>
 
