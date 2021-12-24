@@ -39,6 +39,7 @@
 					class="bg-slate-100 mt-1 px-2 rounded-md w-full focus:bg-slate-200 focus:outline-none text-slate-700"
 					type="text"
 					id="newName"
+					onfocus="this.select();"
 					bind:value={$newName}
 				/>
 			</label>
@@ -52,8 +53,11 @@
 				<label for="newHue">
 					<input
 						class="bg-slate-100 px-2 rounded-md w-12 focus:bg-slate-200 focus:outline-none text-slate-700 text-right"
-						type="text"
+						type="number"
 						id="newHue"
+						min="0"
+						max="450"
+						onfocus="this.select();"
 						bind:value={$sliderHue}
 					/>
 				</label>
@@ -114,6 +118,7 @@
 				<label for="newName">
 					<input
 						class="bg-gray-200 shadow-sm px-2 w-full h-6 rounded-md focus:bg-slate-300 focus:outline-none text-slate-700"
+						onfocus="this.select();"
 						type="text"
 						id="newName"
 						bind:value={$newName}
@@ -124,8 +129,11 @@
 				<label for="newHue">
 					<input
 						class="bg-gray-200 shadow-sm px-2 w-full h-6 rounded-md focus:bg-slate-300 focus:outline-none text-slate-700 text-right"
-						type="text"
+						type="number"
 						id="newHue"
+						min="0"
+						max="450"
+						onfocus="this.select();"
 						bind:value={$sliderHue}
 					/>
 				</label>
@@ -174,5 +182,14 @@
 		border: none;
 		background: #aaa;
 		cursor: pointer;
+	}
+	input::-webkit-outer-spin-button,
+	input::-webkit-inner-spin-button {
+		-webkit-appearance: none;
+		margin: 0;
+	}
+
+	input[type='number'] {
+		-moz-appearance: textfield;
 	}
 </style>
