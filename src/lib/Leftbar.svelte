@@ -78,7 +78,7 @@
 			<Highlight language={javascript} code={$colorCodes} />
 			<button
 				on:click={copyCode}
-				class="absolute top-2 right-2 p-1.5 rounded-md h-7 bg-gray-800 text-gray-400 hover:text-gray-200 hover:bg-gray-700"
+				class="absolute top-2 right-2 p-1.5 rounded-md h-7 text-gray-400 hover:text-gray-200 hover:bg-gray-700"
 			>
 				<svg
 					aria-hidden="true"
@@ -98,7 +98,7 @@
 			{#if showCopyMessage}
 				<div
 					transition:fade
-					class="absolute top-2 right-2 p-1.5 rounded-md h-7 text-gray-50 bg-gray-700"
+					class="absolute top-2 right-2 p-1.5 rounded-md text-gray-50 bg-gray-700"
 				>
 					Code copied !
 				</div>
