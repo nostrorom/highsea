@@ -20,7 +20,7 @@
 	/>
 	<meta name="keywords" content="tailwindcss, custom colors" />
 	<meta name="author" content="Nos Dev" />
-	<script async src="https://www.googletagmanager.com/gtag/js?id=G-S5RS3VWKQ2"></script>
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-F133XSHVT7"></script>
 	<script>
 		window.dataLayer = window.dataLayer || [];
 		function gtag() {
@@ -28,7 +28,7 @@
 		}
 		gtag('js', new Date());
 
-		gtag('config', 'G-S5RS3VWKQ2');
+		gtag('config', 'G-F133XSHVT7');
 	</script>
 </svelte:head>
 
