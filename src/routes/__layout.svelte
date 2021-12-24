@@ -19,6 +19,16 @@
 	/>
 	<meta name="keywords" content="tailwindcss, custom colors" />
 	<meta name="author" content="Nos Dev" />
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-F133XSHVT7"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag() {
+			dataLayer.push(arguments);
+		}
+		gtag('js', new Date());
+
+		gtag('config', 'G-F133XSHVT7');
+	</script>
 </svelte:head>
 
 <div class="fixed top-0 w-screen font-main z-10">
