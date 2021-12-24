@@ -65,7 +65,7 @@ export const h2x = readable(hsl2hex);
 export const baseColors = writable([]);
 export const refLevel = writable(500);
 
-export const sliderHue = writable(250);
+export const sliderHue = writable(225);
 export const newHue = derived(sliderHue, (sliderHue, set) => {
 	set(sliderHue % 360);
 });

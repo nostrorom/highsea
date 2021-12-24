@@ -2,6 +2,7 @@
 	import '../app.css';
 	import Header from '$lib/Header.svelte';
 	import Leftbar from '$lib/Leftbar.svelte';
+	import Rightbar from '$lib/Rightbar.svelte';
 	import twColors from '../../static/colors.json';
 	import { baseColors } from '$lib/stores/colors';
 	import '@fontsource/mulish';
@@ -31,17 +32,20 @@
 	</script>
 </svelte:head>
 
-<div class="fixed top-0 w-screen font-main z-10">
-	<div class="w-ful h-12 mx-auto font-main bg-gradient-to-tr from-slate-900 to-blue-900">
+<div class="fixed top-0 w-full font-main z-10">
+	<div class="h-12 mx-auto font-main bg-gradient-to-tr from-slate-900 to-blue-900">
 		<Header />
 	</div>
 </div>
 
 <main class="w-full font-main">
-	<div class="h-full w-1/6 fixed left-0">
+	<div class="h-full z-40 w-1/6 fixed hidden md:block left-0 mt-12">
 		<Leftbar />
 	</div>
-	<div class="relative w-4/6 mx-auto">
+	<div class="relative w-full md:w-4/6 mx-auto">
 		<slot />
+	</div>
+	<div class="h-full w-1/6 fixed hidden md:block right-0 mt-12">
+		<Rightbar />
 	</div>
 </main>
