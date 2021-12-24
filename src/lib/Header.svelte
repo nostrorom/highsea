@@ -60,5 +60,12 @@
 				<Icon icon="github" size="h-5" />
 			</a>
 		</div>
+		<div
+			class="h-full w-10 text-slate-300 border-t border-amber-500 border-opacity-0 hover:border-opacity-100 px-2 pb-0.5 flex items-center"
+		>
+			<a href="https://www.patreon.com/nosdev" target="_blank">
+				<Icon icon="patreon" size="h-4" />
+			</a>
+		</div>
 	</div>
 </header>
