@@ -40,13 +40,13 @@
 </div>
 
 <main class="w-full font-main">
-	<div class="h-full z-40 w-1/6 fixed hidden md:block left-0 mt-12">
+	<div class="h-full z-40 w-1/6 fixed hidden xl:block left-0 mt-12">
 		<Leftbar />
 	</div>
-	<div class="relative w-full md:w-4/6 mx-auto">
+	<div class="relative w-full xl:w-4/6 mx-auto">
 		<slot />
 	</div>
-	<div class="h-full w-1/6 fixed hidden md:block right-0 mt-12">
+	<div class="h-full w-1/6 fixed hidden xl:block right-0 mt-12">
 		<Rightbar />
 	</div>
 </main>
