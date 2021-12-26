@@ -72,14 +72,13 @@ export const newHue = derived(sliderHue, (sliderHue, set) => {
 
 export const colors = derived([baseColors, refLevel], ([baseColors, refLevel], set) => {
 	let newColors = baseColors;
-	if (baseColors.length !== 0) {
-		newColors.forEach((color) => {
-			color.levels.forEach((level) => {
-				level.hsl = hex2hsl(level.hex);
-			});
-			color.refHue = color.levels.find((level) => level.id === refLevel).hsl.h;
+	newColors.forEach((color) => {
+		color.type = 'tailwind';
+		color.levels.forEach((level) => {
+			level.hsl = hex2hsl(level.hex);
 		});
-	}
+		color.refHue = color.levels.find((level) => level.id === refLevel).hsl.h;
+	});
 	set(newColors);
 });
 
@@ -169,7 +168,7 @@ export const newName = writable('mycolor');
 
 const generateColor = ({ bottomColor, topColor }, ratio, newHue, newName) => {
 	let refLevels = [50, 100, 200, 300, 400, 500, 600, 700, 800, 900];
-	let newColor = { id: newName, levels: [], refHue: newHue };
+	let newColor = { id: newName, type: 'highsea', levels: [], refHue: newHue };
 
 	const interpolate = (bottomValue, topValue, ratio) => {
 		return Math.round(bottomValue + (topValue - bottomValue) * ratio);
@@ -203,7 +202,11 @@ const generateColor = ({ bottomColor, topColor }, ratio, newHue, newName) => {
 		});
 	});
 
-	return newColor;
+	if (ratio === 1) {
+		return bottomColor;
+	} else {
+		return newColor;
+	}
 };
 
 export const newColor = derived(

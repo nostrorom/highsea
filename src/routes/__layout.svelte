@@ -33,20 +33,14 @@
 	</script>
 </svelte:head>
 
-<div class="fixed top-0 w-full font-main z-10">
-	<div class="h-12 mx-auto font-main bg-gradient-to-tr from-slate-900 to-blue-900">
-		<Header />
+<div class="bg-gray-200 slate-900 h-full antialiased">
+	<div class="fixed top-0 w-full font-main z-10">
+		<div class="h-12 mx-auto font-main bg-gradient-to-tr from-slate-900 to-blue-900">
+			<Header />
+		</div>
 	</div>
-</div>
 
-<main class="w-full font-main">
-	<div class="h-full z-40 w-1/6 fixed hidden xl:block left-0 mt-12">
-		<Leftbar />
-	</div>
-	<div class="relative w-full xl:w-4/6 mx-auto">
+	<main class="w-full font-main">
 		<slot />
-	</div>
-	<div class="h-full w-1/6 fixed hidden xl:block right-0 mt-12">
-		<Rightbar />
-	</div>
-</main>
+	</main>
+</div>

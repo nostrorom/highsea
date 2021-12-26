@@ -1,21 +1,29 @@
 <script>
+	import Logo from '$lib/Logo.svelte';
 	export let color;
 </script>
 
-<div class="px-2" on:click>
-	<div class="grid grid-cols-11 text-xs xl:text-sm">
+<div class="px-1.5 lg:pl-0 font-mono" on:click>
+	<div class="grid grid-cols-12 text-xs xl:text-sm">
 		<div
-			class="col-span-3 xl:col-span-1 flex justify-between xl:justify-start xl:flex-col items-end xl:px-1 lg:px-2 mr-3 xl:border-r border-slate-300 pb-2 xl:pb-0"
+			class="col-span-12 md:col-span-3 lg:col-span-2 xl:col-span-1 flex justify-between lg:items-end lg:justify-start lg:flex-col xl:px-1 lg:px-2 mr-3 lg:border-r border-slate-300 pb-2 xl:pb-0 truncate"
 		>
-			<h5 class="text-slate-600 font-semibold text-sm">
-				{color.id}
-			</h5>
-			<p class="text-slate-500 text-sm">
+			<div class="flex space-x-1">
+				<div class="flex items-center">
+					<Logo logo={color.type} size="h-2" />
+				</div>
+				<p class="text-slate-700 text-sm">
+					{color.id}
+				</p>
+			</div>
+			<p class="text-slate-400 text-sm">
 				{color.refHue}
 			</p>
 		</div>
 
-		<div class="col-span-11 xl:col-span-10 grid grid-cols-5 xl:grid-cols-10 gap-1 w-full h-full ">
+		<div
+			class="col-span-12 lg:col-span-10 xl:col-span-11 grid grid-cols-5 xl:grid-cols-10 gap-y-1 gap-x-2 lg:gap-x-1 w-full h-full "
+		>
 			{#each color.levels as level}
 				<div class="font-mono">
 					<div class="h-12 w-full rounded-lg relative" style="background:{level['hex']}">
@@ -23,7 +31,7 @@
 							{level.id}
 						</div>
 					</div>
-					<div class="flex justify-between px-1 space-x-1 font-mono">
+					<div class="flex justify-between px-1 space-x- font-mono">
 						<p class="text-slate-400 hidden xl:block">
 							{level.id}
 						</p>

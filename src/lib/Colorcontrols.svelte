@@ -3,6 +3,8 @@
 	import Highlight from 'svelte-highlight';
 	import javascript from 'svelte-highlight/src/languages/javascript';
 	import atomOneDark from 'svelte-highlight/src/styles/atom-one-dark';
+	import Icon from '$lib/Icon.svelte';
+	import Bartitle from '$lib/Bartitle.svelte';
 	import { newHue, sliderHue, newName, h2x, colorCodes } from '$lib/stores/colors';
 
 	export let mobile = false;
@@ -31,12 +33,16 @@
 </svelte:head>
 
 {#if !mobile}
-	<div class="h-full space-y-5 pl-4 pr-2">
-		<div class="pt-2">
+	<div class="h-full space-y-5 px-2 lg:px-3 py-2">
+		<Bartitle icon="sliders" />
+		<div class="">
 			<label for="newName">
-				<p class="py-2 text-slate-500 font-bold leading-none">name</p>
+				<div class="flex space-x-1 py-1 items-center">
+					<div class="h-3 w-3 bg-gradient-to-tr from-slate-900 to-blue-700 rounded-full" />
+					<p class="text-blue-900 font-semibold leading-none">Name</p>
+				</div>
 				<input
-					class="bg-slate-100 mt-1 px-2 rounded-md w-full focus:bg-slate-200 focus:outline-none text-slate-700"
+					class="bg-white mt-1 px-2 rounded-md w-full focus:ring-2 ring-amber-500 focus:outline-none text-slate-700"
 					type="text"
 					id="newName"
 					onfocus="this.select();"
@@ -46,13 +52,16 @@
 		</div>
 		<div>
 			<div class="flex justify-between items-center py-2 text-slate-500 leading-none">
-				<p class="font-bold">hue</p>
+				<div class="flex space-x-1 py-1 items-center">
+					<div class="h-3 w-3 bg-gradient-to-tr from-slate-900 to-blue-700 rounded-full" />
+					<p class="text-blue-900 font-semibold leading-none">Hue</p>
+				</div>
 				{#if $sliderHue > 359}
-					<p class="text-slate-400">{$newHue}</p>
+					<p class="text-gray-500">{$newHue}</p>
 				{/if}
 				<label for="newHue">
 					<input
-						class="bg-slate-100 px-2 rounded-md w-12 focus:bg-slate-200 focus:outline-none text-slate-700 text-right"
+						class="bg-white px-2 rounded-md w-12 focus:ring-2 ring-amber-500 focus:outline-none text-slate-700 text-right"
 						type="number"
 						id="newHue"
 						min="0"
@@ -73,12 +82,16 @@
 					type="range"
 					min="0"
 					max="450"
-					class="slider bg-neutral-200 h-2 w-full rounded-sm"
+					class="slider bg-white h-2 w-full rounded-sm"
 				/>
 			</div>
 		</div>
 		<div>
-			<p class="py-2 text-slate-500 font-bold leading-none">code</p>
+			<div class="flex space-x-1 py-1 items-center">
+				<div class="h-3 w-3 bg-gradient-to-tr from-slate-900 to-blue-700 rounded-full" />
+				<p class="text-blue-900 font-semibold leading-none">Code</p>
+			</div>
+
 			<div class="text-xs rounded-md overflow-hidden relative">
 				<Highlight language={javascript} code={$colorCodes} />
 				<button
@@ -105,7 +118,7 @@
 						transition:fade
 						class="absolute top-2 right-2 p-1.5 rounded-md text-gray-50 bg-gray-700"
 					>
-						Code copied !
+						Copied to clipboard
 					</div>
 				{/if}
 			</div>
@@ -117,7 +130,7 @@
 			<div class="w-2/3">
 				<label for="newName">
 					<input
-						class="bg-gray-200 shadow-sm px-2 w-full h-6 rounded-md focus:bg-slate-300 focus:outline-none text-slate-700"
+						class="bg-gray-200 shadow-sm px-2 w-full h-6 rounded-md focus:ring-amber-500 focus:ring-2 focus:outline-none text-slate-700"
 						onfocus="this.select();"
 						type="text"
 						id="newName"
@@ -128,7 +141,7 @@
 			<div class="w-1/3">
 				<label for="newHue">
 					<input
-						class="bg-gray-200 shadow-sm px-2 w-full h-6 rounded-md focus:bg-slate-300 focus:outline-none text-slate-700 text-right"
+						class="bg-gray-200 shadow-sm px-2 w-full h-6 rounded-md focus:ring-amber-500 focus:ring-2 focus:outline-none text-slate-700 text-right"
 						type="number"
 						id="newHue"
 						min="0"
@@ -156,7 +169,7 @@
 					type="range"
 					min="0"
 					max="450"
-					class="slider bg-neutral-200 h-2 w-full rounded-sm"
+					class="slider bg-gray-300 h-2 w-full rounded-sm"
 				/>
 			</div>
 		</div>
@@ -170,8 +183,8 @@
 		width: 15px;
 		height: 15px;
 		border-radius: 50%;
-		border: none;
-		background: #aaa;
+		border: 2px solid #fff;
+		background: #777;
 		cursor: pointer;
 	}
 
@@ -179,8 +192,8 @@
 		width: 15px;
 		height: 15px;
 		border-radius: 50%;
-		border: none;
-		background: #aaa;
+		border: 2px solid #fff;
+		background: #777;
 		cursor: pointer;
 	}
 	input::-webkit-outer-spin-button,

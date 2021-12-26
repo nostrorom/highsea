@@ -5,13 +5,15 @@
 <script>
 	import { colors } from '$lib/stores/colors';
 	import Text from '$lib/Text.svelte';
+	import Rightbar from '$lib/Rightbar.svelte';
 </script>
 
 <svelte:head>
 	<title>Docs</title>
 </svelte:head>
 
-<div class="mt-12 space-y-3 h-full w-full absolute">
+<div class="pt-12 space-y-3 px-12 h-screen w-full md:w-3/6 md:mx-auto bg-white">
+	<!-- <div class="mt-12 space-y-3 h-full w-full absolute"> -->
 	<Text title="Where it all started">
 		<p>You like tailwindcss, it allows you to develop faster, and it's pretty fun to use.</p>
 		<p>
@@ -67,4 +69,8 @@
 
 		<p>In the mean time, happy coding and I hope highsea proves useful to you.</p>
 	</Text>
+</div>
+
+<div class="fixed right-0 top-0 pt-12 h-full w-3/12 hidden md:block">
+	<Rightbar />
 </div>

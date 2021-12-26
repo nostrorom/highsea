@@ -5,7 +5,7 @@
 	let homepage = $page.path === '/';
 </script>
 
-<div class="p-2 py-3 mx-auto">
+<div class="p-2 py-2 w-full h-full">
 	<a
 		href="https://nostrorom.com"
 		target="_blank"
