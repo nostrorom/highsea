@@ -70,26 +70,25 @@ export const newHue = derived(sliderHue, (sliderHue, set) => {
 	set(sliderHue % 360);
 });
 
-export const colors = derived([baseColors, refLevel], ([baseColors, refLevel], set) => {
-	let newColors = baseColors;
-	newColors.forEach((color) => {
+export const colors = derived([baseColors, refLevel], ([baseColors, refLevel]) => {
+	return baseColors.map((color) => {
 		color.type = 'tailwind';
 		color.levels.forEach((level) => {
 			level.hsl = hex2hsl(level.hex);
 		});
 		color.refHue = color.levels.find((level) => level.id === refLevel).hsl.h;
+		return color;
 	});
-	set(newColors);
 });
 
-export const refHues = derived([baseColors, refLevel], ([baseColors, refLevel], set) => {
-	let list = [];
+export const refHues = derived([baseColors, refLevel], ([baseColors, refLevel]) => {
+	let hues = [];
 	baseColors.forEach((color) => {
 		let levels = color.levels;
 
 		levels.forEach((level) => {
 			if (level.id === refLevel) {
-				list.push({
+				hues.push({
 					id: color.id,
 					hue: level.hsl.h
 				});
@@ -97,7 +96,7 @@ export const refHues = derived([baseColors, refLevel], ([baseColors, refLevel], 
 		});
 	});
 
-	set(list);
+	return hues;
 });
 
 const findBoundingColorsAndRatio = (colors, hueArray, hueValue) => {
@@ -141,28 +140,17 @@ const findBoundingColorsAndRatio = (colors, hueArray, hueValue) => {
 	return { bottomColor, topColor, ratio };
 };
 
-export const boundingColors = derived(
-	[colors, refHues, newHue],
-	([colors, refHues, newHue], set) => {
-		let bounds = findBoundingColorsAndRatio(colors, refHues, newHue);
+export const boundingColors = derived([colors, refHues, newHue], ([colors, refHues, newHue]) => {
+	let bounds = findBoundingColorsAndRatio(colors, refHues, newHue);
 
-		let bottomColor = bounds.bottomColor;
-		let topColor = bounds.topColor;
+	return { bottomColor: bounds.bottomColor, topColor: bounds.topColor };
+});
 
-		set({ bottomColor, topColor });
-	}
-);
+export const boundingRatio = derived([colors, refHues, newHue], ([colors, refHues, newHue]) => {
+	let bounds = findBoundingColorsAndRatio(colors, refHues, newHue);
 
-export const boundingRatio = derived(
-	[colors, refHues, newHue],
-	([colors, refHues, newHue], set) => {
-		let bounds = findBoundingColorsAndRatio(colors, refHues, newHue);
-
-		let ratio = bounds.ratio;
-
-		set(ratio);
-	}
-);
+	return bounds.ratio;
+});
 
 export const newName = writable('mycolor');
 
@@ -216,7 +204,7 @@ export const newColor = derived(
 	}
 );
 
-export const colorCodes = derived([newColor, newName], ([newColor, newName], set) => {
+export const colorCodes = derived([newColor, newName], ([newColor, newName]) => {
 	let string = `'${newName}': {
   `;
 
@@ -234,5 +222,5 @@ export const colorCodes = derived([newColor, newName], ([newColor, newName], set
 		}
 	});
 
-	set(string);
+	return string;
 });
