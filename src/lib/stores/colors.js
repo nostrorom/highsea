@@ -205,7 +205,7 @@ export const newColor = derived(
 );
 
 export const colorCodes = derived([newColor, newName], ([newColor, newName]) => {
-	let string = `'${newName}': {
+	let string = `${newName}: {
   `;
 
 	newColor.levels.forEach((level) => {
@@ -218,7 +218,7 @@ export const colorCodes = derived([newColor, newName], ([newColor, newName]) => 
 			string =
 				string +
 				`${level.id}: '${level.hex}'
-}`;
+},`;
 		}
 	});
 

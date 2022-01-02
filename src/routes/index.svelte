@@ -17,8 +17,8 @@
 	<Colorcontrols />
 </div>
 
-<div class="pt-64 md:pt-56 lg:pt-32 h-full w-full md:w-4/6 md:mx-auto bg-white">
-	<div class="fixed top-12 pt-2 z-10 w-full md:w-4/6 shadow-sm bg-white">
+<div class="pt-64 md:pt-56 lg:pt-32 h-full w-full md:w-4/6 md:mx-auto bg-white dark:bg-black">
+	<div class="fixed top-12 pt-2 z-10 w-full md:w-4/6 shadow-sm bg-white dark:bg-black">
 		<div class="flex md:hidden">
 			<Colorcontrols mobile="true" />
 		</div>

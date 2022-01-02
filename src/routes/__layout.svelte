@@ -33,7 +33,7 @@
 	</script>
 </svelte:head>
 
-<div class="bg-gray-200 slate-900 h-full antialiased">
+<div class="bg-gray-200 dark:bg-slate-900 h-full antialiased">
 	<div class="fixed top-0 w-full font-main z-10">
 		<div class="h-12 mx-auto font-main bg-gradient-to-tr from-slate-900 to-blue-900">
 			<Header />
