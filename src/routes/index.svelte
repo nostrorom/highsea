@@ -9,6 +9,12 @@
 	import Rightbar from '$lib/Rightbar.svelte';
 
 	paletteColors.set($tailwindColors);
+
+	$paletteColors.sort((colorA, colorB) => {
+		return colorB.refHue - colorA.refHUe;
+	});
+
+	$: console.log(paletteColors);
 </script>
 
 <svelte:head>
