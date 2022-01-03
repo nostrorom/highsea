@@ -1,6 +1,6 @@
 [
     {
-        "id": "red",
+        "name": "red",
         "levels": [
             {
                 "id": 50,
@@ -45,7 +45,7 @@
         ]
     },
     {
-        "id": "orange",
+        "name": "orange",
         "levels": [
             {
                 "id": 50,
@@ -90,7 +90,7 @@
         ]
     },
     {
-        "id": "amber",
+        "name": "amber",
         "levels": [
             {
                 "id": 50,
@@ -135,7 +135,7 @@
         ]
     },
     {
-        "id": "yellow",
+        "name": "yellow",
         "levels": [
             {
                 "id": 50,
@@ -180,7 +180,7 @@
         ]
     },
     {
-        "id": "lime",
+        "name": "lime",
         "levels": [
             {
                 "id": 50,
@@ -225,7 +225,7 @@
         ]
     },
     {
-        "id": "green",
+        "name": "green",
         "levels": [
             {
                 "id": 50,
@@ -270,7 +270,7 @@
         ]
     },
     {
-        "id": "emerald",
+        "name": "emerald",
         "levels": [
             {
                 "id": 50,
@@ -315,7 +315,7 @@
         ]
     },
     {
-        "id": "teal",
+        "name": "teal",
         "levels": [
             {
                 "id": 50,
@@ -360,7 +360,7 @@
         ]
     },
     {
-        "id": "cyan",
+        "name": "cyan",
         "levels": [
             {
                 "id": 50,
@@ -405,7 +405,7 @@
         ]
     },
     {
-        "id": "sky",
+        "name": "sky",
         "levels": [
             {
                 "id": 50,
@@ -450,7 +450,7 @@
         ]
     },
     {
-        "id": "blue",
+        "name": "blue",
         "levels": [
             {
                 "id": 50,
@@ -495,7 +495,7 @@
         ]
     },
     {
-        "id": "indigo",
+        "name": "indigo",
         "levels": [
             {
                 "id": 50,
@@ -540,7 +540,7 @@
         ]
     },
     {
-        "id": "violet",
+        "name": "violet",
         "levels": [
             {
                 "id": 50,
@@ -585,7 +585,7 @@
         ]
     },
     {
-        "id": "purple",
+        "name": "purple",
         "levels": [
             {
                 "id": 50,
@@ -630,7 +630,7 @@
         ]
     },
     {
-        "id": "fuchsia",
+        "name": "fuchsia",
         "levels": [
             {
                 "id": 50,
@@ -675,7 +675,7 @@
         ]
     },
     {
-        "id": "pink",
+        "name": "pink",
         "levels": [
             {
                 "id": 50,
@@ -720,7 +720,7 @@
         ]
     },
     {
-        "id": "rose",
+        "name": "rose",
         "levels": [
             {
                 "id": 50,

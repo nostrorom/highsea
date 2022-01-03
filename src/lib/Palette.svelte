@@ -13,7 +13,7 @@
 					<Logo logo={color.type} size="h-2" />
 				</div>
 				<p class="text-slate-700 dark:text-slate-300 text-sm">
-					{color.id}
+					{color.name}
 				</p>
 			</div>
 			<p class="text-slate-400 dark:text-slate-400 text-sm">

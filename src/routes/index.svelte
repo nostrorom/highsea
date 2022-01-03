@@ -3,10 +3,12 @@
 </script>
 
 <script>
-	import { colors, newColor, sliderHue } from '$lib/stores/colors';
+	import { tailwindColors, paletteColors, newColor, sliderHue } from '$lib/stores/colors';
 	import Palette from '$lib/Palette.svelte';
 	import Colorcontrols from '$lib/Colorcontrols.svelte';
 	import Rightbar from '$lib/Rightbar.svelte';
+
+	paletteColors.set($tailwindColors);
 </script>
 
 <svelte:head>
@@ -25,7 +27,7 @@
 		<Palette color={$newColor} />
 	</div>
 	<div class="space-y-2 pt-4">
-		{#each $colors as color (color.id)}
+		{#each $paletteColors as color (color.name)}
 			<Palette
 				{color}
 				on:click={() => {
@@ -33,7 +35,7 @@
 				}}
 			/>
 		{/each}
-		{#each $colors as color (color.id)}
+		{#each $paletteColors as color (color.name)}
 			<Palette
 				{color}
 				on:click={() => {

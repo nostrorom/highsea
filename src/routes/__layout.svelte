@@ -1,15 +1,9 @@
 <script>
 	import '../app.css';
 	import Header from '$lib/Header.svelte';
-	import Leftbar from '$lib/Leftbar.svelte';
-	import Rightbar from '$lib/Rightbar.svelte';
-	import twColors from '../../static/colors.json';
-	import { baseColors } from '$lib/stores/colors';
 	import '@fontsource/mulish';
 	import '@fontsource/poppins';
 	import '@fontsource/jetbrains-mono';
-
-	baseColors.set(twColors);
 </script>
 
 <svelte:head>
