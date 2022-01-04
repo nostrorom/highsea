@@ -21,7 +21,7 @@
 <div class="font-mono">
 	<div class="grid grid-cols-12 text-xs xl:text-sm relative group">
 		<div
-			class="col-span-6 lg:col-span-2 xl:col-span-1 flex lg:items-end justify-start pt-2 lg:flex-col lg:p-2 space-x-3"
+			class="col-span-6 lg:col-span-2 xl:col-span-1 flex items-center lg:items-end justify-start py-1.5 md:pb-0 lg:flex-col lg:p-2 space-x-3"
 		>
 			<div class="flex items-center text-blue-900 dark:text-white">
 				<Logo logo={color.type} size="h-2" />
@@ -35,7 +35,7 @@
 		</div>
 
 		<div
-			class="col-span-12 bg-white dark:bg-black p-2 lg:col-span-10 xl:col-span-11 grid grid-cols-5 xl:grid-cols-10 gap-y-1 gap-x-2 lg:gap-x-1 w-full h-full "
+			class="col-span-12 bg-white dark:bg-black px-2 py-2 lg:pb-0 lg:col-span-10 xl:col-span-11 grid grid-cols-5 xl:grid-cols-10 gap-y-1 gap-x-2 lg:gap-x-1 w-full h-full "
 		>
 			{#each color.levels as level}
 				<div class="font-mono">
@@ -52,22 +52,31 @@
 						<p class="text-slate-600 dark:text-slate-300 ">
 							{level.hex}
 						</p>
-						<p class="text-slate-400 dark:text-slate-500 hidden lg:flex">
+						<p class="text-slate-400 dark:text-slate-400 hidden lg:flex">
 							{level.id}
 						</p>
 					</div>
 				</div>
 			{/each}
 			{#if controls}
-				<div class="flex-col opacity-100 md:opacity-0 group-hover:opacity-100 absolute -left-0">
-					<div class="flex flex-col items-center text-slate-400 dark:text-slate-500 pl-1 pr-3">
-						<button on:click={view} class="pb-2 hover:text-lime-600">
-							<Icon icon="view" size="h-4" />
-						</button>
+				<div
+					class="opacity-100 lg:opacity-0 group-hover:opacity-100 absolute right-0 -top-0 lg:-left-0 pt-0.5 lg:pt-0"
+				>
+					<div class="flex justify-end lg:justify-start ">
+						<div
+							class="flex lg:flex-col items-center justify-center text-slate-400 dark:text-slate-500 px-2 lg:pl-1 lg:pr-3"
+						>
+							<button
+								on:click={view}
+								class="px-2 lg:px-0 py-1 flex items-center lg:pb-2 hover:text-blue-500"
+							>
+								<Icon icon="view" size="h-4" />
+							</button>
 
-						<button on:click={remove} class="pb-2 hover:text-red-700">
-							<Icon icon="remove" size="h-4" />
-						</button>
+							<button on:click={remove} class="px-2 lg:px-0 py-1 md:pb-2 hover:text-amber-600">
+								<Icon icon="remove" size="h-4" />
+							</button>
+						</div>
 					</div>
 				</div>
 			{/if}

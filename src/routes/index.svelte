@@ -82,7 +82,9 @@
 	<Colorcontrols on:add={addColor} />
 </div>
 
-<div class="pt-64 md:pt-56 lg:pt-32 h-full w-full md:w-4/6 md:mx-auto ">
+<div
+	class="pt-64 mt-4 md:pt-52 md:mt-2 lg:pt-44 xl:pt-32 2xl:pt-28 h-full w-full md:w-4/6 md:mx-auto "
+>
 	<div
 		class="fixed top-12 z-10 w-full md:w-4/6 border-b-8 border-gray-200 dark:border-slate-900 shadow-sm shadow-gray-200 dark:shadow-slate-900"
 	>
