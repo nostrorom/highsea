@@ -3,7 +3,6 @@
 </script>
 
 <script>
-	import { colors } from '$lib/stores/colors';
 	import Text from '$lib/Text.svelte';
 	import Rightbar from '$lib/Rightbar.svelte';
 </script>
