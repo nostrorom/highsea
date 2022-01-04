@@ -29,7 +29,7 @@
 			<p class="text-slate-700 dark:text-slate-300 text-sm">
 				{color.name}
 			</p>
-			<p class="text-slate-400 dark:text-slate-400 text-sm">
+			<p class="text-slate-400 dark:text-slate-500 text-sm">
 				{color.refHue}
 			</p>
 		</div>

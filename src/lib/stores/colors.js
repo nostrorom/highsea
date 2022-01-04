@@ -1,6 +1,7 @@
 import { writable, readable, derived } from 'svelte/store';
 import baseColors from '../../../static/colors.json';
 
+const allHues = [...Array(360).keys()];
 const baseLevels = [50, 100, 200, 300, 400, 500, 600, 700, 800, 900];
 
 //
@@ -214,6 +215,12 @@ export const tailwindColors = derived(refLevel, (reference) => {
 
 export const colorLevels = writable(baseLevels);
 
+export const allColors = derived([tailwindColors, refLevel], ([colors, reference]) => {
+	return allHues.map((i) => {
+		return generateColor(colors, baseLevels, reference, i, `color-${i}`);
+	});
+});
+
 export const paletteColors = writable([]);
 
 export const paletteNames = derived(paletteColors, (colors) => {
@@ -224,12 +231,22 @@ export const paletteHues = derived([paletteColors, refLevel], ([colors, referenc
 	return getHues(colors, reference);
 });
 
-export const newColor = derived(
-	[tailwindColors, refLevel, newHue, newName],
-	([colors, reference, hue, name]) => {
-		return generateColor(colors, baseLevels, reference, hue, name);
-	}
-);
+export const newColor = derived([allColors, newHue, newName], ([colors, hue, name]) => {
+	let color = colors.find((color) => {
+		return color.refHue === hue;
+	});
+	color.name = name;
+	// newName.set(name);
+
+	return color;
+});
+
+// export const newColor = derived(
+// 	[tailwindColors, refLevel, newHue, newName],
+// 	([colors, reference, hue, name]) => {
+// 		return generateColor(colors, baseLevels, reference, hue, name);
+// 	}
+// );
 
 export const colorCodes = derived([newColor, newName], ([newColor, newName]) => {
 	let string = `${newName}: {
@@ -251,3 +268,13 @@ export const colorCodes = derived([newColor, newName], ([newColor, newName]) => 
 
 	return string;
 });
+
+// const allStuff = allHues.map((i) => {
+// 	// console.log(i);
+// 	let name = `All-${i}`;
+// 	// return name;
+
+// 	return generateColor(tailwindColors, baseLevels, refLevel, i, name);
+// });
+
+// export const allGamut = writable(allStuff);

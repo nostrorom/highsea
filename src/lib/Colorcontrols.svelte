@@ -1,13 +1,19 @@
 <script>
-	import { fade } from 'svelte/transition';
+	import { slide } from 'svelte/transition';
 	import { createEventDispatcher } from 'svelte';
 
-	import Highlight from 'svelte-highlight';
-	import javascript from 'svelte-highlight/src/languages/javascript';
-	import atomOneDark from 'svelte-highlight/src/styles/atom-one-dark';
 	import Icon from '$lib/Icon.svelte';
 	import Bartitle from '$lib/Bartitle.svelte';
-	import { newHue, sliderHue, newName, h2x, colorCodes } from '$lib/stores/colors';
+	import Codeblock from '$lib/Codeblock.svelte';
+	import {
+		newHue,
+		sliderHue,
+		newName,
+		newColor,
+		h2x,
+		paletteColors,
+		paletteNames
+	} from '$lib/stores/colors';
 
 	export let mobile = false;
 	const hsl2hex = $h2x;
@@ -22,28 +28,49 @@
 		};
 	});
 
-	let showCopyMessage = false;
-
-	const copyCode = () => {
-		navigator.clipboard.writeText($colorCodes);
-		showCopyMessage = true;
-		setTimeout(() => {
-			showCopyMessage = false;
-		}, 2500);
-	};
+	let error = {};
 
 	const addColor = () => {
-		dispatch('add');
-	};
-</script>
+		let duplicateHue = $paletteColors.filter((color) => {
+			return color.refHue === $newColor.refHue;
+		});
+		let duplicateName = $paletteColors.filter((color) => {
+			return color.name.toString() === $newColor.name.toString();
+		});
 
-<svelte:head>
-	{@html atomOneDark}
-</svelte:head>
+		if (duplicateHue.length !== 0) {
+			error = { message: 'Duplicate hue', name: duplicateHue[0].name, hue: duplicateHue[0].refHue };
+		} else if (duplicateName.length !== 0) {
+			error = {
+				message: 'Duplicate name',
+				name: duplicateName[0].name,
+				hue: duplicateName[0].refHue
+			};
+		} else {
+			error = {};
+			paletteColors.set([...$paletteColors, $newColor]);
+			$paletteColors.sort((colorA, colorB) => {
+				return colorA.refHue - colorB.refHue;
+			});
+		}
+	};
+
+	let colorCodes;
+
+	$: {
+		colorCodes = `${$newName}: {`;
+		$newColor.levels.forEach((level) => {
+			colorCodes = `${colorCodes}
+  ${level.id}: '${level.hex}',`;
+		});
+		colorCodes = `${colorCodes}
+},`;
+	}
+</script>
 
 {#if !mobile}
 	<div class="h-full space-y-5 px-2 lg:px-3 py-2">
-		<Bartitle icon="sliders" />
+		<Bartitle icon="sliders">Color</Bartitle>
 		<div class="">
 			<label for="newName">
 				<div class="flex space-x-1 py-1 items-center">
@@ -104,12 +131,24 @@
 				/>
 			</div>
 		</div>
+		{#if error.message !== undefined}
+			<div
+				transition:slide
+				class="text-sm border-2 border-red-700 text-amber-500 px-2 py-1 rounded-md bg-slate-800"
+			>
+				{error.message}
+				<div class="flex justify-between">
+					<div class="opacity-80">{error.name}</div>
+					<div class="opacity-70">{error.hue}</div>
+				</div>
+			</div>
+		{/if}
 		<button
 			on:click={addColor}
-			class="text-white flex mx-auto space-x-2 justify-around items-center bg-gradient-to-tr from-slate-900 to-blue-700 dark:from-amber-900 dark:to-amber-500 p-2 rounded-lg "
+			class="text-white flex mx-auto space-x-2 justify-around items-center bg-gradient-to-tr from-slate-900 to-blue-700 dark:from-amber-900 dark:to-amber-500 py-1 px-2 rounded-lg "
 		>
 			<Icon icon="add" size="h-4" />
-			<div>Add to palette</div>
+			<div class="text-sm">Add color</div>
 		</button>
 		<div>
 			<div class="flex space-x-1 py-1 items-center">
@@ -119,36 +158,7 @@
 				<p class="text-blue-900 dark:text-amber-500 font-semibold leading-none">Code</p>
 			</div>
 
-			<div class="text-xs rounded-md overflow-hidden relative">
-				<Highlight language={javascript} code={$colorCodes} />
-				<button
-					on:click={copyCode}
-					class="absolute top-2 right-2 p-1.5 rounded-md h-7 text-gray-400 hover:text-gray-200 hover:bg-gray-700"
-				>
-					<svg
-						aria-hidden="true"
-						focusable="false"
-						data-prefix="far"
-						data-icon="clone"
-						class="svg-inline--fa fa-clone fa-w-16 h-full"
-						role="img"
-						xmlns="http://www.w3.org/2000/svg"
-						viewBox="0 0 512 512"
-						><path
-							fill="currentColor"
-							d="M464 0H144c-26.51 0-48 21.49-48 48v48H48c-26.51 0-48 21.49-48 48v320c0 26.51 21.49 48 48 48h320c26.51 0 48-21.49 48-48v-48h48c26.51 0 48-21.49 48-48V48c0-26.51-21.49-48-48-48zM362 464H54a6 6 0 0 1-6-6V150a6 6 0 0 1 6-6h42v224c0 26.51 21.49 48 48 48h224v42a6 6 0 0 1-6 6zm96-96H150a6 6 0 0 1-6-6V54a6 6 0 0 1 6-6h308a6 6 0 0 1 6 6v308a6 6 0 0 1-6 6z"
-						/></svg
-					>
-				</button>
-				{#if showCopyMessage}
-					<div
-						transition:fade
-						class="absolute top-2 right-2 p-1.5 rounded-md text-gray-50 bg-gray-700"
-					>
-						Copied to clipboard
-					</div>
-				{/if}
-			</div>
+			<Codeblock code={colorCodes} />
 		</div>
 	</div>
 {:else}
