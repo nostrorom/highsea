@@ -203,6 +203,7 @@ export const newHue = derived(sliderHue, (sliderHue) => {
 export const tailwindColors = derived(refLevel, (reference) => {
 	return baseColors.map((color) => {
 		color.type = 'tailwind';
+		color.tailwindName = color.name;
 		color.levels.forEach((level) => {
 			level.hsl = hex2hsl(level.hex);
 		});

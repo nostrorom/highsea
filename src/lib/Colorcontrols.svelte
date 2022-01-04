@@ -1,5 +1,7 @@
 <script>
 	import { fade } from 'svelte/transition';
+	import { createEventDispatcher } from 'svelte';
+
 	import Highlight from 'svelte-highlight';
 	import javascript from 'svelte-highlight/src/languages/javascript';
 	import atomOneDark from 'svelte-highlight/src/styles/atom-one-dark';
@@ -8,13 +10,16 @@
 	import { newHue, sliderHue, newName, h2x, colorCodes } from '$lib/stores/colors';
 
 	export let mobile = false;
-	const hsl2rgb = $h2x;
+	const hsl2hex = $h2x;
+	const dispatch = createEventDispatcher();
 
 	let hues = [...Array(450).keys()];
 
-	let hexCodes = [];
-	hues.forEach((hue) => {
-		hexCodes.push(hsl2rgb({ h: hue, s: 70, l: 55 }));
+	let hexCodes = hues.map((hue) => {
+		return {
+			hue,
+			hex: hsl2hex({ h: hue, s: 70, l: 55 })
+		};
 	});
 
 	let showCopyMessage = false;
@@ -25,6 +30,10 @@
 		setTimeout(() => {
 			showCopyMessage = false;
 		}, 2500);
+	};
+
+	const addColor = () => {
+		dispatch('add');
 	};
 </script>
 
@@ -43,41 +52,46 @@
 					/>
 					<p class="text-blue-900 dark:text-amber-500 font-semibold leading-none">Name</p>
 				</div>
-				<input
-					class="bg-white dark:bg-slate-700 mt-1 px-2 rounded-md w-full focus:ring-2 ring-amber-500 focus:outline-none text-slate-700 dark:text-slate-300"
-					type="text"
-					id="newName"
-					onfocus="this.select();"
-					bind:value={$newName}
-				/>
 			</label>
+			<input
+				class="bg-white dark:bg-slate-700 mt-1 px-2 py-1 rounded-md w-full focus:ring-2 ring-amber-500 focus:outline-none text-slate-700 dark:text-slate-300"
+				type="text"
+				id="newName"
+				onfocus="this.select();"
+				bind:value={$newName}
+			/>
 		</div>
 		<div>
 			<div class="flex justify-between items-center py-2 text-slate-500 leading-none">
-				<div class="flex space-x-1 py-1 items-center">
+				<div class="flex space-x-1 py-1 items-center ">
 					<div
-						class="h-3 w-3 bg-gradient-to-tr from-slate-900 to-blue-700 dark:from-amber-900 dark:to-amber-500  rounded-full"
+						class="h-3 w-3 bg-gradient-to-tr from-slate-900 to-blue-700 dark:from-amber-900 dark:to-amber-500 rounded-full"
 					/>
 					<p class="text-blue-900 dark:text-amber-500 font-semibold leading-none">Hue</p>
 				</div>
 				{#if $sliderHue > 359}
 					<p class="text-gray-500 ">{$newHue}</p>
 				{/if}
-				<label for="newHue">
-					<input
-						class="bg-white dark:bg-slate-700 px-2 rounded-md w-12 focus:ring-2 ring-amber-500 focus:outline-none text-slate-700 dark:text-slate-300 text-right"
-						type="number"
-						id="newHue"
-						min="0"
-						max="450"
-						onfocus="this.select();"
-						bind:value={$sliderHue}
-					/>
-				</label>
+				<label for="newHue" />
+				<input
+					class="bg-white dark:bg-slate-700 px-2 py-1 w-1/3 rounded-md focus:ring-2 ring-amber-500 focus:outline-none text-slate-700 dark:text-slate-300 text-right"
+					type="number"
+					id="newHue"
+					min="0"
+					max="450"
+					onfocus="this.select();"
+					bind:value={$sliderHue}
+				/>
 			</div>
 			<div class="flex rounded-md shadow-sm overflow-hidden">
-				{#each hexCodes as hex}
-					<div style={`background:${hex}`} class="w-1 h-5" />
+				{#each hexCodes as code}
+					<div
+						style={`background:${code.hex}`}
+						class="w-1 h-5"
+						on:click={() => {
+							sliderHue.set(code.hue);
+						}}
+					/>
 				{/each}
 			</div>
 			<div>
@@ -90,6 +104,13 @@
 				/>
 			</div>
 		</div>
+		<button
+			on:click={addColor}
+			class="text-white flex mx-auto space-x-2 justify-around items-center bg-gradient-to-tr from-slate-900 to-blue-700 dark:from-amber-900 dark:to-amber-500 p-2 rounded-lg "
+		>
+			<Icon icon="add" size="h-4" />
+			<div>Add to palette</div>
+		</button>
 		<div>
 			<div class="flex space-x-1 py-1 items-center">
 				<div
@@ -136,7 +157,7 @@
 			<div class="w-2/3">
 				<label for="newName">
 					<input
-						class="bg-gray-200 dark:bg-slate-700 shadow-sm px-2 w-full h-6 rounded-md focus:ring-amber-500 focus:ring-2 focus:outline-none text-slate-700 dark:text-slate-300"
+						class="bg-gray-200 dark:bg-slate-700 shadow-sm px-2 h-6 w-full rounded-md focus:ring-amber-500 focus:ring-2 focus:outline-none text-slate-700 dark:text-slate-300"
 						onfocus="this.select();"
 						type="text"
 						id="newName"
