@@ -152,7 +152,7 @@
 		</div>
 	</div>
 {:else}
-	<div class="px-3 pt-2 w-full flex text-sm">
+	<div class="px-3 pt-2 w-full flex text-sm bg-white dark:bg-slate-900">
 		<div class="w-1/3 flex space-x-2">
 			<div class="w-2/3">
 				<label for="newName">
@@ -186,11 +186,17 @@
 		</div>
 		<div class="w-2/3 pl-2">
 			<div class="flex rounded-md shadow-sm overflow-hidden">
-				{#each hexCodes as hex}
-					<div style={`background:${hex}`} class="w-1 h-6" />
+				{#each hexCodes as code}
+					<div
+						style={`background:${code.hex}`}
+						class="w-1 h-5"
+						on:click={() => {
+							sliderHue.set(code.hue);
+						}}
+					/>
 				{/each}
 			</div>
-			<div>
+			<div class="pb-1">
 				<input
 					bind:value={$sliderHue}
 					type="range"

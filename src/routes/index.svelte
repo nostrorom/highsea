@@ -35,10 +35,6 @@
 		error2 = false;
 	}
 
-	$: console.log(error2);
-
-	$: console.log($paletteColors);
-
 	const addColor = () => {
 		let error = '';
 
