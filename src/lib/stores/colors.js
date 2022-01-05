@@ -219,8 +219,6 @@ export const paletteHues = derived([paletteColors, refShade], ([colors, referenc
 
 export const newColor = derived([allColors, newHue, newName], ([colors, hue, name]) => {
 	let color = { ...colors.find((color) => color.refHue === hue) };
-	// let sourceColor = colors.find((color) => color.refHue ===} hue);
-	// let color = sourceColor;
 	if (name !== '') {
 		color.name = name;
 	} else if (color.type === 'tailwind') {
@@ -252,13 +250,3 @@ export const colorCodes = derived(newColor, (newColor) => {
 
 	return string;
 });
-
-// const allStuff = allHues.map((i) => {
-// 	// console.log(i);
-// 	let name = `All-${i}`;
-// 	// return name;
-
-// 	return generateColor(tailwindColors, baseShades, refShade, i, name);
-// });
-
-// export const allGamut = writable(allStuff);
