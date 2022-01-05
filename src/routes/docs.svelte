@@ -11,62 +11,84 @@
 	<title>Docs</title>
 </svelte:head>
 
-<div class="pt-12 space-y-3 px-12 h-screen w-full md:w-3/6 md:mx-auto bg-white">
+<div
+	class="pt-12 space-y-3 px-12 h-screen w-full md:w-3/6 md:mx-auto bg-gray-100 dark:bg-slate-800 antialiased"
+>
 	<!-- <div class="mt-12 space-y-3 h-full w-full absolute"> -->
-	<Text title="Where it all started">
-		<p>You like tailwindcss, it allows you to develop faster, and it's pretty fun to use.</p>
+	<Text title="Color shades generator">
 		<p>
-			There is a particular color that you like, or that you can't change because it's from a logo,
-			or a client's brand, or your dog likes it, or your cat hates it, or any other reason, even no
-			reason at all - you just want to.
+			TailwindCSS default colors are mainly defined by their hue. To create a new color, select the
+			hue with the slider or directly type the value in the input field.
 		</p>
-		<p>
-			You try the nearest tailwind colors, but whichever way it always feels off, off enough to make
-			you want to have another color just between the stock ones.
-		</p>
-		<p>
-			You consider building it yourself but after fiddling a bit with a color picker, you realise it
-			would be tedious to create a custom palette that fits with the existing ones, because you want
-			to use some too.
-		</p>
-		<p>
-			You search for a way to do this faster, and you don't really find anything that really saves
-			time.
-		</p>
-	</Text>
-	<Text>
-		<p>This you is me.</p>
+		<p class="italic">Planned feature: hue finder from a hex code.</p>
 	</Text>
 	<Text>
 		<p>
-			Well, it's also you. But also me. But...hmm. Anyway, it's how highsea was born: I didn't find
-			anything easy enough for my liking, so I built it.
+			You can choose a custom name for your color - by default highsea will name it after the chosen
+			hue.
 		</p>
 	</Text>
-	<Text title="How to use">
+	<Text>
 		<p>
-			The first functionality is rather simple to use. Fiddle with the hues to find one you like,
-			choose a name for your color, copy the code and voilà, you're good to go.
+			For Tailwind colors, hue varies slightly along the range of shades - for the moment the hue
+			chosen as reference corresponds to the shade 500.
+		</p>
+		<p class="italic">Planned feature: ability to change the reference shade.</p>
+	</Text>
+	<Text>
+		<p>
+			If you're only interested in this color, the code block allows you to copy just the HEX codes
+			for that color.
 		</p>
 		<p>
-			The rest happens in your app, refer to
+			Refer to
 			<a
 				href="https://tailwindcss.com/docs/customizing-colors#adding-additional-colors"
 				target="_blank"
-				class="text-blue-500 font-bold"
+				class="text-sky-500 font-bold"
 			>
-				this section
+				the tailwindcss docs
 			</a>
-			of the offical docs for where the codes should go.
+			for where the codes should go.
+		</p>
+	</Text>
+
+	<Text title="Palette builder">
+		<p>
+			By default the palette includes all the Tailwind colors. You can remove the ones you do not
+			wish to use. You can always add them back in your palette via the Tailwind menu.
+		</p>
+		<p>
+			NOTE: the five grays as well as black and white are included so that you can copy the full
+			code block - even if they are not customizable yet.
+		</p>
+
+		<p class="italic">Planned feature: color shade builder for grays.</p>
+	</Text>
+
+	<Text>
+		<p>
+			The code block allows you to copy the HEX codes for your custom colors and the tailwind colors
+			you choose to include.
+		</p>
+
+		<p>
+			Refer to
+			<a
+				href="https://tailwindcss.com/docs/customizing-colors#adding-additional-colors"
+				target="_blank"
+				class="text-sky-500 font-bold"
+			>
+				the tailwindcss docs
+			</a>
+			for where the codes should go.
 		</p>
 	</Text>
 	<Text title="What's next">
 		<p>
-			Many more features are coming, to make the experience of building your custom palette as easy
-			and complete as possible, and with them the docs will expand as well.
+			Planned features: HEX picker, shade reference change, gray shade builder, color harmonies, and
+			others to be defined.
 		</p>
-
-		<p>In the mean time, happy coding and I hope highsea proves useful to you.</p>
 	</Text>
 </div>
 

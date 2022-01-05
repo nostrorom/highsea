@@ -1,5 +1,6 @@
 import { writable, readable, derived } from 'svelte/store';
 import baseColors from '../../../static/colors.json';
+import baseGrays from '../../../static/grays.json';
 
 const allHues = [...Array(360).keys()];
 const baseShades = [50, 100, 200, 300, 400, 500, 600, 700, 800, 900];
@@ -203,6 +204,18 @@ export const tailwindColors = derived(refShade, (reference) =>
 	})
 );
 
+export const tailwindGrays = derived(refShade, (reference) =>
+	baseGrays.map((color) => {
+		color.type = 'tailwind';
+		color.tailwindName = color.name;
+		color.shades.forEach((shade) => {
+			shade.hsl = hex2hsl(shade.hex);
+		});
+		color.refHue = color.shades.find((shade) => shade.id === reference).hsl.h;
+		return color;
+	})
+);
+
 export const colorShades = writable(baseShades);
 
 export const allColors = derived([tailwindColors, refShade], ([colors, reference]) =>
@@ -210,6 +223,7 @@ export const allColors = derived([tailwindColors, refShade], ([colors, reference
 );
 
 export const paletteColors = writable([]);
+export const paletteGrays = writable([]);
 
 export const paletteNames = derived(paletteColors, (colors) => getNames(colors));
 

@@ -7,6 +7,8 @@
 	import {
 		tailwindColors,
 		paletteColors,
+		tailwindGrays,
+		paletteGrays,
 		paletteNames,
 		allColors,
 		newColor,
@@ -18,6 +20,7 @@
 	import Rightbar from '$lib/Rightbar.svelte';
 
 	paletteColors.set($tailwindColors);
+	paletteGrays.set($tailwindGrays);
 
 	let error = '';
 
@@ -99,6 +102,21 @@
 					on:view={() => {
 						viewColor(color.refHue);
 					}}
+				/>
+			</div>
+		{/each}
+		<br />
+		{#each $paletteGrays as color (color.name)}
+			<div transition:slide>
+				<Palette
+					{color}
+					on:remove={() => {
+						removeColor(color.name);
+					}}
+					on:view={() => {
+						viewColor(color.refHue);
+					}}
+					controls={false}
 				/>
 			</div>
 		{/each}

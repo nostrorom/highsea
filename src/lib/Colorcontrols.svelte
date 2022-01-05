@@ -99,7 +99,7 @@
 </script>
 
 {#if !mobile}
-	<div class="h-full space-y-5 px-2 lg:px-3 py-2 text-sm antialiased">
+	<div class="h-full space-y-5 px-2 lg:px-3 py-2 text-sm antialiased overflow-y-auto">
 		<Bartitle icon="sliders">Color</Bartitle>
 
 		<div class="">
