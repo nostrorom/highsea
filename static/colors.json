@@ -1,7 +1,7 @@
 [
     {
         "name": "red",
-        "levels": [
+        "shades": [
             {
                 "id": 50,
                 "hex": "#FEF2F2"
@@ -46,7 +46,7 @@
     },
     {
         "name": "orange",
-        "levels": [
+        "shades": [
             {
                 "id": 50,
                 "hex": "#FFF7ED"
@@ -91,7 +91,7 @@
     },
     {
         "name": "amber",
-        "levels": [
+        "shades": [
             {
                 "id": 50,
                 "hex": "#FFFBEB"
@@ -136,7 +136,7 @@
     },
     {
         "name": "yellow",
-        "levels": [
+        "shades": [
             {
                 "id": 50,
                 "hex": "#FEFCE8"
@@ -181,7 +181,7 @@
     },
     {
         "name": "lime",
-        "levels": [
+        "shades": [
             {
                 "id": 50,
                 "hex": "#F7FEE7"
@@ -226,7 +226,7 @@
     },
     {
         "name": "green",
-        "levels": [
+        "shades": [
             {
                 "id": 50,
                 "hex": "#F0FDF4"
@@ -271,7 +271,7 @@
     },
     {
         "name": "emerald",
-        "levels": [
+        "shades": [
             {
                 "id": 50,
                 "hex": "#ECFDF5"
@@ -316,7 +316,7 @@
     },
     {
         "name": "teal",
-        "levels": [
+        "shades": [
             {
                 "id": 50,
                 "hex": "#F0FDFA"
@@ -361,7 +361,7 @@
     },
     {
         "name": "cyan",
-        "levels": [
+        "shades": [
             {
                 "id": 50,
                 "hex": "#ECFEFF"
@@ -406,7 +406,7 @@
     },
     {
         "name": "sky",
-        "levels": [
+        "shades": [
             {
                 "id": 50,
                 "hex": "#F0F9FF"
@@ -451,7 +451,7 @@
     },
     {
         "name": "blue",
-        "levels": [
+        "shades": [
             {
                 "id": 50,
                 "hex": "#EFF6FF"
@@ -496,7 +496,7 @@
     },
     {
         "name": "indigo",
-        "levels": [
+        "shades": [
             {
                 "id": 50,
                 "hex": "#EEF2FF"
@@ -541,7 +541,7 @@
     },
     {
         "name": "violet",
-        "levels": [
+        "shades": [
             {
                 "id": 50,
                 "hex": "#F5F3FF"
@@ -586,7 +586,7 @@
     },
     {
         "name": "purple",
-        "levels": [
+        "shades": [
             {
                 "id": 50,
                 "hex": "#FAF5FF"
@@ -631,7 +631,7 @@
     },
     {
         "name": "fuchsia",
-        "levels": [
+        "shades": [
             {
                 "id": 50,
                 "hex": "#FDF4FF"
@@ -676,7 +676,7 @@
     },
     {
         "name": "pink",
-        "levels": [
+        "shades": [
             {
                 "id": 50,
                 "hex": "#FDF2F8"
@@ -721,7 +721,7 @@
     },
     {
         "name": "rose",
-        "levels": [
+        "shades": [
             {
                 "id": 50,
                 "hex": "#FFF1F2"

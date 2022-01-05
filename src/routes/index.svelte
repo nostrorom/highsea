@@ -65,11 +65,7 @@
 	};
 
 	const removeColor = (name) => {
-		paletteColors.set([
-			...$paletteColors.filter((color) => {
-				return color.name !== name;
-			})
-		]);
+		paletteColors.set([...$paletteColors.filter((color) => color.name !== name)]);
 	};
 </script>
 

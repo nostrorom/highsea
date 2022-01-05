@@ -10,10 +10,9 @@
 	<meta charset="UTF-8" />
 	<meta
 		name="description"
-		content="Easily create your own custom colors for tailwindcss.
-        Highsea generates the 50-900 range, with all the associated hex codes for you to paaste in your tailwindcss onfig file."
+		content="Color generator for tailwindcss: easily create full color ranges, build a palette that can be used together with the default tailwindcss colors."
 	/>
-	<meta name="keywords" content="tailwindcss, custom colors" />
+	<meta name="keywords" content="tailwindcss, custom colors, color generator" />
 	<meta name="author" content="Nos Dev" />
 	<script async src="https://www.googletagmanager.com/gtag/js?id=G-F133XSHVT7"></script>
 	<script>

@@ -6,7 +6,7 @@
 	import Logo from '$lib/Logo.svelte';
 	import Codeblock from '$lib/Codeblock.svelte';
 	import Bartitle from '$lib/Bartitle.svelte';
-	import { newHue, sliderHue, newName, h2x, newColor, paletteColors } from '$lib/stores/colors';
+	import { newHue, sliderHue, h2x, newColor, paletteColors } from '$lib/stores/colors';
 
 	// export let mobile = false;
 	const hsl2hex = $h2x;
@@ -20,6 +20,11 @@
 			hex: hsl2hex({ h: hue, s: 70, l: 55 })
 		};
 	});
+
+	const removeColor = (name) => {
+		paletteColors.set([...$paletteColors.filter((color) => color.name !== name)]);
+	};
+
 	let colorCodes;
 
 	$: {
@@ -33,9 +38,9 @@
 				colorCodes = `${colorCodes}
   ${color.name}: {`;
 
-				color.levels.forEach((level) => {
+				color.shades.forEach((shade) => {
 					colorCodes = `${colorCodes}
-    ${level.id}: '${level.hex}',`;
+    ${shade.id}: '${shade.hex}',`;
 				});
 				colorCodes = `${colorCodes}
   },`;
@@ -57,7 +62,7 @@
 		</div>
 		<div>
 			{#each $paletteColors as color (color.name)}
-				<div class="flex space-x-2">
+				<div class="flex space-x-2 relative group">
 					<div class="flex items-center text-blue-900 dark:text-white">
 						<Logo logo={color.type} size="h-2" />
 					</div>
@@ -67,6 +72,27 @@
 					<p class="text-slate-400 dark:text-slate-500 text-sm">
 						{color.refHue}
 					</p>
+					<div class="opacity-0 group-hover:opacity-100 absolute right-0 pt-0.5">
+						<div class="flex ju">
+							<div class="flex text-slate-400 dark:text-slate-500">
+								<!-- <button
+								on:click={viewColor}
+								class="px-2 lg:px-0 py-1 flex items-center lg:pb-2 hover:text-sky-500"
+							>
+								<Icon icon="view" size="h-4" />
+							</button> -->
+
+								<button
+									on:click={() => {
+										removeColor(color.name);
+									}}
+									class="hover:text-red-500 pl-4"
+								>
+									<Icon icon="remove" size="h-3" />
+								</button>
+							</div>
+						</div>
+					</div>
 				</div>
 			{/each}
 		</div>

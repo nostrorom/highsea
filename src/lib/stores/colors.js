@@ -2,7 +2,7 @@ import { writable, readable, derived } from 'svelte/store';
 import baseColors from '../../../static/colors.json';
 
 const allHues = [...Array(360).keys()];
-const baseLevels = [50, 100, 200, 300, 400, 500, 600, 700, 800, 900];
+const baseShades = [50, 100, 200, 300, 400, 500, 600, 700, 800, 900];
 
 //
 // Converter functions
@@ -65,39 +65,29 @@ const hsl2hex = ({ h, s, l }) => {
 };
 
 export const h2x = readable(hsl2hex);
+export const x2h = readable(hex2hsl);
 
 //
 // Color functions
 //
 
-const getNames = (colors) => {
-	return colors.map((color) => {
-		return color.name;
-	});
-};
+const getNames = (colors) => colors.map((color) => color.name);
 
-const getHues = (colors, reference) => {
-	return colors.map((color) => {
-		return color.levels.find((level) => {
-			return level.id === reference;
-		}).hsl.h;
-	});
-};
+const getHues = (colors, reference) =>
+	colors.map((color) => color.shades.find((shade) => shade.id === reference).hsl.h);
 
-const gethuesWithNames = (colors, reference) => {
-	return colors.map((color) => {
+const gethuesWithNames = (colors, reference) =>
+	colors.map((color) => {
 		return {
 			name: color.name,
-			hue: color.levels.find((level) => {
-				return level.id === reference;
+			hue: color.shades.find((shade) => {
+				return shade.id === reference;
 			}).hsl.h
 		};
 	});
-};
 
-const interpolate = (bottomValue, topValue, ratio) => {
-	return Math.round(bottomValue + (topValue - bottomValue) * ratio);
-};
+const interpolate = (bottomValue, topValue, ratio) =>
+	Math.round(bottomValue + (topValue - bottomValue) * ratio);
 
 const findBoundingColorsAndRatio = (colors, reference, hueValue) => {
 	let huesOnly = getHues(colors, reference);
@@ -145,7 +135,7 @@ const findBoundingColorsAndRatio = (colors, reference, hueValue) => {
 	return { bottomColor, topColor, ratio };
 };
 
-const generateColor = (colors, levels, reference, hue, name) => {
+const generateColor = (colors, shades, reference, hue, name) => {
 	const { bottomColor, topColor, ratio } = findBoundingColorsAndRatio(colors, reference, hue);
 
 	let newColor;
@@ -153,18 +143,18 @@ const generateColor = (colors, levels, reference, hue, name) => {
 	if (ratio === 1) {
 		newColor = bottomColor;
 	} else {
-		newColor = { name, type: 'highsea', levels: [], refHue: hue };
+		newColor = { highseaName: name, type: 'highsea', shades: [], refHue: hue };
 
-		levels.forEach((level) => {
+		shades.forEach((shade) => {
 			let bottomHsl = {
-				h: bottomColor.levels.find((item) => item.id === level).hsl.h,
-				s: bottomColor.levels.find((item) => item.id === level).hsl.s,
-				l: bottomColor.levels.find((item) => item.id === level).hsl.l
+				h: bottomColor.shades.find((item) => item.id === shade).hsl.h,
+				s: bottomColor.shades.find((item) => item.id === shade).hsl.s,
+				l: bottomColor.shades.find((item) => item.id === shade).hsl.l
 			};
 			let topHsl = {
-				h: topColor.levels.find((item) => item.id === level).hsl.h,
-				s: topColor.levels.find((item) => item.id === level).hsl.s,
-				l: topColor.levels.find((item) => item.id === level).hsl.l
+				h: topColor.shades.find((item) => item.id === shade).hsl.h,
+				s: topColor.shades.find((item) => item.id === shade).hsl.s,
+				l: topColor.shades.find((item) => item.id === shade).hsl.l
 			};
 			if (topHsl.h < bottomHsl.h) {
 				topHsl.h = topHsl.h + 360;
@@ -176,8 +166,8 @@ const generateColor = (colors, levels, reference, hue, name) => {
 				l: interpolate(bottomHsl.l, topHsl.l, ratio)
 			};
 
-			newColor.levels.push({
-				id: level,
+			newColor.shades.push({
+				id: shade,
 				hsl,
 				hex: hsl2hex(hsl)
 			});
@@ -191,9 +181,9 @@ const generateColor = (colors, levels, reference, hue, name) => {
 // Exported stores
 //
 
-export const refLevel = writable(500);
+export const refShade = writable(500);
 
-export const newName = writable('mycolor');
+export const newName = writable('');
 
 export const sliderHue = writable(225);
 
@@ -201,67 +191,61 @@ export const newHue = derived(sliderHue, (sliderHue) => {
 	return sliderHue % 360;
 });
 
-export const tailwindColors = derived(refLevel, (reference) => {
-	return baseColors.map((color) => {
+export const tailwindColors = derived(refShade, (reference) =>
+	baseColors.map((color) => {
 		color.type = 'tailwind';
 		color.tailwindName = color.name;
-		color.levels.forEach((level) => {
-			level.hsl = hex2hsl(level.hex);
+		color.shades.forEach((shade) => {
+			shade.hsl = hex2hsl(shade.hex);
 		});
-		color.refHue = color.levels.find((level) => level.id === reference).hsl.h;
+		color.refHue = color.shades.find((shade) => shade.id === reference).hsl.h;
 		return color;
-	});
-});
+	})
+);
 
-export const colorLevels = writable(baseLevels);
+export const colorShades = writable(baseShades);
 
-export const allColors = derived([tailwindColors, refLevel], ([colors, reference]) => {
-	return allHues.map((i) => {
-		return generateColor(colors, baseLevels, reference, i, `color-${i}`);
-	});
-});
+export const allColors = derived([tailwindColors, refShade], ([colors, reference]) =>
+	allHues.map((i) => generateColor(colors, baseShades, reference, i, `color_${i}`))
+);
 
 export const paletteColors = writable([]);
 
-export const paletteNames = derived(paletteColors, (colors) => {
-	return getNames(colors);
-});
+export const paletteNames = derived(paletteColors, (colors) => getNames(colors));
 
-export const paletteHues = derived([paletteColors, refLevel], ([colors, reference]) => {
-	return getHues(colors, reference);
-});
+export const paletteHues = derived([paletteColors, refShade], ([colors, reference]) =>
+	getHues(colors, reference)
+);
 
 export const newColor = derived([allColors, newHue, newName], ([colors, hue, name]) => {
-	let color = colors.find((color) => {
-		return color.refHue === hue;
-	});
-	color.name = name;
-	// newName.set(name);
+	let color = { ...colors.find((color) => color.refHue === hue) };
+	// let sourceColor = colors.find((color) => color.refHue ===} hue);
+	// let color = sourceColor;
+	if (name !== '') {
+		color.name = name;
+	} else if (color.type === 'tailwind') {
+		color.name = color.tailwindName;
+	} else {
+		color.name = color.highseaName;
+	}
 
 	return color;
 });
 
-// export const newColor = derived(
-// 	[tailwindColors, refLevel, newHue, newName],
-// 	([colors, reference, hue, name]) => {
-// 		return generateColor(colors, baseLevels, reference, hue, name);
-// 	}
-// );
-
-export const colorCodes = derived([newColor, newName], ([newColor, newName]) => {
-	let string = `${newName}: {
+export const colorCodes = derived(newColor, (newColor) => {
+	let string = `${newColor.name}: {
   `;
 
-	newColor.levels.forEach((level) => {
-		if (level.id !== 900) {
+	newColor.shades.forEach((shade) => {
+		if (shade.id !== 900) {
 			string =
 				string +
-				`${level.id}: '${level.hex}',
+				`${shade.id}: '${shade.hex}',
 	  `;
 		} else {
 			string =
 				string +
-				`${level.id}: '${level.hex}'
+				`${shade.id}: '${shade.hex}'
 	},`;
 		}
 	});
@@ -274,7 +258,7 @@ export const colorCodes = derived([newColor, newName], ([newColor, newName]) => 
 // 	let name = `All-${i}`;
 // 	// return name;
 
-// 	return generateColor(tailwindColors, baseLevels, refLevel, i, name);
+// 	return generateColor(tailwindColors, baseShades, refShade, i, name);
 // });
 
 // export const allGamut = writable(allStuff);

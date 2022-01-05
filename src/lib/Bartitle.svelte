@@ -10,6 +10,6 @@
 		>
 			<Icon {icon} size="h-4" />
 		</div>
-		<h5 class="leading-none text-blue-900 dark:text-amber-500"><slot /></h5>
+		<h5 class="leading-none text-base text-blue-900 dark:text-amber-500"><slot /></h5>
 	</div>
 </div>

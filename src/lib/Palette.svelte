@@ -26,7 +26,7 @@
 			<div class="flex items-center text-blue-900 dark:text-white">
 				<Logo logo={color.type} size="h-2" />
 			</div>
-			<p class="text-slate-700 dark:text-slate-300 text-sm">
+			<p class="text-slate-700 dark:text-slate-300 text-sm break-words w-full text-right">
 				{color.name}
 			</p>
 			<p class="text-slate-400 dark:text-slate-500 text-sm">
@@ -37,23 +37,23 @@
 		<div
 			class="col-span-12 bg-white dark:bg-black px-2 py-2 lg:pb-0 lg:col-span-10 xl:col-span-11 grid grid-cols-5 xl:grid-cols-10 gap-y-1 gap-x-2 lg:gap-x-1 w-full h-full "
 		>
-			{#each color.levels as level}
+			{#each color.shades as shade}
 				<div class="font-mono">
-					<div class="h-12 w-full rounded-lg relative" style="background:{level['hex']}">
+					<div class="h-12 w-full rounded-lg relative" style="background:{shade['hex']}">
 						<div
 							class="opacity-85 text-slate-500 dark:text-slate-400 rounded-br-md px-1 absolute top-0 bg-white dark:bg-black left-0 lg:hidden"
 						>
-							{level.id}
+							{shade.id}
 						</div>
 					</div>
 					<div
 						class="flex flex-col lg:flex-row xl:flex-col 2xl:flex-row justify-between px-1 pt-0.5 font-mono"
 					>
 						<p class="text-slate-600 dark:text-slate-300 ">
-							{level.hex}
+							{shade.hex}
 						</p>
 						<p class="text-slate-400 dark:text-slate-400 hidden lg:flex">
-							{level.id}
+							{shade.id}
 						</p>
 					</div>
 				</div>
@@ -68,12 +68,12 @@
 						>
 							<button
 								on:click={view}
-								class="px-2 lg:px-0 py-1 flex items-center lg:pb-2 hover:text-blue-500"
+								class="px-2 lg:px-0 py-1 flex items-center lg:pb-2 hover:text-sky-500"
 							>
 								<Icon icon="view" size="h-4" />
 							</button>
 
-							<button on:click={remove} class="px-2 lg:px-0 py-1 md:pb-2 hover:text-amber-600">
+							<button on:click={remove} class="px-2 lg:px-0 py-1 md:pb-2 hover:text-red-600">
 								<Icon icon="remove" size="h-4" />
 							</button>
 						</div>
