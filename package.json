@@ -1,6 +1,6 @@
 {
     "name": "highsea",
-    "version": "0.5.3",
+    "version": "0.5.5",
     "engines": {
         "node": "16.x"
     },

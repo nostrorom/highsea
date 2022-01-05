@@ -173,7 +173,7 @@
 			{/if}
 			{#each $paletteGrays as color (color.name)}
 				<div class="flex space-x-2 relative group">
-					<div class="flex items-center text-blue-900 dark:text-white">
+					<div class="flex items-center text-blue-900 dark:text-white grayscale">
 						<Logo logo={color.type} size="h-2" />
 					</div>
 					<p class="text-slate-700 dark:text-slate-300 text-sm">
@@ -210,7 +210,7 @@
 			{/if}
 			{#each paletteBWs as color (color.name)}
 				<div class="flex space-x-2 relative group">
-					<div class="flex items-center text-blue-900 dark:text-white">
+					<div class="flex items-center grayscale">
 						<Logo logo={color.type} size="h-2" />
 					</div>
 					<p class="text-slate-700 dark:text-slate-300 text-sm">
