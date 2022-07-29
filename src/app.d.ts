@@ -25,12 +25,16 @@ interface BaseShade {
 	hex: string;
 }
 
-interface Shade extends BaseShade {
-	rgb: RGB;
+interface FullShade extends BaseShade {
+	rgb?: RGB;
 	hsl: HSL;
 }
 
-interface Color {
+interface TailwindColor {
 	name: string;
-	shades: (BaseShade | Shade)[];
+	shades: BaseShade[];
+}
+
+interface HighseaColor extends TailwindColor {
+	shades: FullShade[]
 }
