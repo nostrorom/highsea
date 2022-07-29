@@ -11,7 +11,7 @@ const getColors = async (): Promise<Color[]> => {
 	await page.goto('https://tailwindcss.com/docs/customizing-colors');
 
 	const colors: Color[] = await page
-		.locator('.flex.flex-col.space-y-3')
+		.locator('.flex.flex-col.space-y-3', { hasText: '500'})
 		.evaluateAll((colorDIVS: HTMLDivElement[]) =>
 			colorDIVS.map((colorDIV) => {
 				const name: string = colorDIV.querySelector('.w-16.shrink-0')?.textContent as string;
