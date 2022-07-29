@@ -1,9 +1,9 @@
 <script lang="ts">
 	import '../app.css';
 	import Header from '$lib/Header.svelte';
-	import '@fontsource/mulish';
-	import '@fontsource/poppins';
-	import '@fontsource/jetbrains-mono';
+	// import '@fontsource/mulish';
+	// import '@fontsource/poppins';
+	// import '@fontsource/jetbrains-mono';
 </script>
 
 <svelte:head>

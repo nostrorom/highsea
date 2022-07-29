@@ -53,7 +53,7 @@
 					<a class="" sveltekit:prefetch href="/">
 						<div
 							class="h-full px-3 flex items-center border-t border-amber-500 border-opacity-0 hover:border-opacity-100"
-							class:border-opacity-100={$page.path === '/'}
+							class:border-opacity-100={$page.url.pathname === '/'}
 						>
 							Colors
 						</div>
@@ -63,7 +63,7 @@
 					<a class="" sveltekit:prefetch href="/docs">
 						<div
 							class="h-full px-3 flex items-center border-t border-amber-500 border-opacity-0 hover:border-opacity-100"
-							class:border-opacity-100={$page.path === '/docs'}
+							class:border-opacity-100={$page.url.pathname === '/docs'}
 						>
 							Docs
 						</div>

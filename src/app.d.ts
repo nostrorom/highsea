@@ -19,3 +19,18 @@ interface HSL {
 	s: number;
 	l: number;
 }
+
+interface BaseShade {
+	level: number;
+	hex: string;
+}
+
+interface Shade extends BaseShade {
+	rgb: RGB;
+	hsl: HSL;
+}
+
+interface Color {
+	name: string;
+	shades: (BaseShade | Shade)[];
+}

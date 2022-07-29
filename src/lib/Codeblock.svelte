@@ -1,8 +1,8 @@
 <script>
 	import { fade } from 'svelte/transition';
-	import Highlight from 'svelte-highlight';
-	import javascript from 'svelte-highlight/src/languages/javascript';
-	import atomOneDark from 'svelte-highlight/src/styles/atom-one-dark';
+	// import Highlight from 'svelte-highlight';
+	// import javascript from 'svelte-highlight/src/languages/javascript';
+	// import atomOneDark from 'svelte-highlight/src/styles/atom-one-dark';
 
 	export let code;
 
@@ -18,11 +18,12 @@
 </script>
 
 <svelte:head>
-	{@html atomOneDark}
+	<!-- {@html atomOneDark} -->
 </svelte:head>
 
 <div class="text-xs rounded-md overflow-hidden relative my-1">
-	<Highlight language={javascript} {code} />
+	<!-- <Highlight {code} /> -->
+	<!-- <Highlight language={javascript} {code} /> -->
 	<button
 		on:click={copyCode}
 		class="absolute top-1 right-1 p-1.5 rounded-md h-7 text-zinc-400 hover:text-zinc-50 hover:bg-zinc-900"
