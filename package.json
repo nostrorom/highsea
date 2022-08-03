@@ -1,12 +1,10 @@
 {
 	"name": "highsea",
-	"version": "0.6.0",
+	"version": "0.6.1",
 	"engines": {
 		"node": ">16.x"
 	},
 	"scripts": {
-		"upg": "pnpm add -g pnpm npm-check-updates",
-		"upgo": "ncu -u && pnpm i && npm run dev",
 		"dev": "vite dev",
 		"build": "vite build",
 		"package": "svelte-kit package",
