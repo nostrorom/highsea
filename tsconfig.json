@@ -27,12 +27,12 @@
       "$shared/*": [
         "src/shared/*"
       ],
-      "$types": [
-        "src/types"
-      ],
-      "$types/*": [
-        "src/types/*"
-      ]
+      // "$types": [
+      //   "src/types"
+      // ],
+      // "$types/*": [
+      //   "src/types/*"
+      // ]
     }
   }
 }

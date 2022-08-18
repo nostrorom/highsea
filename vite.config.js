@@ -6,7 +6,7 @@ const config = {
 	plugins: [sveltekit()],
 	resolve: {
 		alias: {
-			$types: resolve('./src/types'),
+			// $types: resolve('./src/types'),
 			$json: resolve('./src/json'),
 			$shared: resolve('./src/shared')
 		}
