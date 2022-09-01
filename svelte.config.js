@@ -10,7 +10,12 @@ const config = {
 	],
 
 	kit: {
-		adapter: adapter()
+		adapter: adapter(),
+		alias: {
+			$json: '/src/json',
+			$shared: '/src/shared',
+			$types: '/types'
+		}
 	}
 };
 

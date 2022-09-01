@@ -1,38 +1,12 @@
 {
-  "extends": "./.svelte-kit/tsconfig.json",
-  "compilerOptions": {
-    "allowJs": false,
-    "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
-    "resolveJsonModule": true,
-    "skipLibCheck": true,
-    "sourceMap": true,
-    "strict": true,
-    "paths": {
-      "$lib": [
-        "src/lib"
-      ],
-      "$lib/*": [
-        "src/lib/*"
-      ],
-      "$json": [
-        "src/json"
-      ],
-      "$json/*": [
-        "src/json/*"
-      ],
-      "$shared": [
-        "src/shared"
-      ],
-      "$shared/*": [
-        "src/shared/*"
-      ],
-      // "$types": [
-      //   "src/types"
-      // ],
-      // "$types/*": [
-      //   "src/types/*"
-      // ]
-    }
-  }
+	"extends": "./.svelte-kit/tsconfig.json",
+	"compilerOptions": {
+		"allowJs": false,
+		"esModuleInterop": true,
+		"forceConsistentCasingInFileNames": true,
+		"resolveJsonModule": true,
+		"skipLibCheck": true,
+		"sourceMap": true,
+		"strict": true
+	}
 }
