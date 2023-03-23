@@ -1,8 +1,8 @@
 <script>
 	import { fade } from 'svelte/transition';
 	import Highlight from 'svelte-highlight';
-	import javascript from 'svelte-highlight/src/languages/javascript';
-	import atomOneDark from 'svelte-highlight/src/styles/atom-one-dark';
+	import javascript from 'svelte-highlight/languages/javascript';
+	import atomOneDark from 'svelte-highlight/styles/atom-one-dark';
 
 	export let code;
 

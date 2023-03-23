@@ -1,6 +1,6 @@
 import { writable, readable, derived } from 'svelte/store';
-import baseColors from '../../../static/colors.json';
-import baseGrays from '../../../static/grays.json';
+import baseColors from '../../json/colors.json';
+import baseGrays from '../../json/grays.json';
 
 const allHues = [...Array(360).keys()];
 const baseShades = [50, 100, 200, 300, 400, 500, 600, 700, 800, 900];
