@@ -45,7 +45,7 @@ importers:
   apps/highsea:
     devDependencies:
       '@nosdev/codes':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../../packages/code
       '@playwright/test':
         specifier: ^1.40.1
@@ -86,9 +86,6 @@ importers:
 
   packages/code:
     devDependencies:
-      '@nosdev/codes':
-        specifier: workspace:*
-        version: 'link:'
       typescript:
         specifier: ^5.2.2
         version: 5.2.2

@@ -10,7 +10,6 @@
 		"preview": "vite preview"
 	},
 	"devDependencies": {
-		"@nosdev/codes": "workspace:*",
 		"typescript": "^5.2.2",
 		"vite": "^5.0.8",
 		"vitest": "^1.0.4"
