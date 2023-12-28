@@ -6,14 +6,12 @@ export default defineConfig({
 	resolve: {
 		alias: {
 			$utils: 'lib/utils',
-			$modules: 'lib/modules',
-			$types: 'types',
 		},
 	},
 	build: {
 		sourcemap: true,
 		lib: {
-			entry: resolve(__dirname, 'lib/index.js'),
+			entry: resolve(__dirname, 'lib/index.ts'),
 			name: pakageJson.name,
 			fileName: basename(pakageJson.module, extname(pakageJson.module)),
 		},

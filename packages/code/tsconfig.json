@@ -20,7 +20,6 @@
 		"noFallthroughCasesInSwitch": true,
 		"baseUrl": ".",
 		"paths": {
-			"$utils": ["lib/utils"],
 			"$modules": ["lib/modules"]
 		}
 	},

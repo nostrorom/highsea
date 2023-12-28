@@ -1,44 +1,30 @@
-import type { RGB } from './rgb';
+import type { HEX } from './hex';
 
-const rgb2hsl = (RGB: RGB.Code): HSL.Code => {
-	let H: number;
+export const hsl2hex = (hsl: HSL.Code): HEX.Code => {
+	const { H, S } = hsl;
+	let { L } = hsl;
 
-	let { R, G, B } = RGB;
+	L /= 100;
 
-	R /= 255;
-	G /= 255;
-	B /= 255;
+	const a: number = (S * Math.min(L, 1 - L)) / 100;
 
-	const max: number = Math.max(R, G, B);
-	const min: number = Math.min(R, G, B);
-	const diff: number = max - min;
-
-	if (diff === 0) {
-		H = 0;
-	} else if (max === R) {
-		H = ((((G - B) / diff) % 6) + 6) % 6;
-	} else if (max === G) {
-		H = (B - R) / diff + 2;
-	} else if (max === B) {
-		H = (R - G) / diff + 4;
-	} else {
-		H = -1;
-	}
-
-	const L = (min + max) / 2;
-	const S = diff === 0 ? 0 : diff / (1 - Math.abs(2 * L - 1));
-
-	return {
-		H: Math.round(H * 60),
-		S: Math.round(S * 100),
-		L: Math.round(L * 100),
+	const convertToHex = (n: number) => {
+		const k: number = (n + H / 30) % 12;
+		const color: number = L - a * Math.max(Math.min(k - 3, 9 - k, 1), -1);
+		return Math.round(255 * color)
+			.toString(16)
+			.padStart(2, '0');
 	};
+
+	const hex: string = `#${convertToHex(0)}${convertToHex(8)}${convertToHex(4)}`.toUpperCase();
+
+	return hex;
 };
 
 // eslint-disable-next-line @typescript-eslint/no-namespace
 export module HSL {
 	export type Code = { H: number; S: number; L: number };
 	export const to = {
-		HSL: rgb2hsl,
+		HEX: hsl2hex,
 	};
 }
