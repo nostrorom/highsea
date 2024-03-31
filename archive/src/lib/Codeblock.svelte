@@ -1,8 +1,14 @@
 <script>
 	import { fade } from 'svelte/transition';
+<<<<<<< HEAD:archive/src/lib/Codeblock.svelte
 	// import Highlight from 'svelte-highlight';
 	// import javascript from 'svelte-highlight/src/languages/javascript';
 	// import atomOneDark from 'svelte-highlight/src/styles/atom-one-dark';
+=======
+	import Highlight from 'svelte-highlight';
+	import javascript from 'svelte-highlight/languages/javascript';
+	import atomOneDark from 'svelte-highlight/styles/atom-one-dark';
+>>>>>>> main:src/lib/Codeblock.svelte
 
 	export let code;
 
