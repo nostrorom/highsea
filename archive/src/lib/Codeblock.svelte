@@ -1,14 +1,8 @@
 <script>
 	import { fade } from 'svelte/transition';
-<<<<<<< HEAD:archive/src/lib/Codeblock.svelte
 	// import Highlight from 'svelte-highlight';
 	// import javascript from 'svelte-highlight/src/languages/javascript';
 	// import atomOneDark from 'svelte-highlight/src/styles/atom-one-dark';
-=======
-	import Highlight from 'svelte-highlight';
-	import javascript from 'svelte-highlight/languages/javascript';
-	import atomOneDark from 'svelte-highlight/styles/atom-one-dark';
->>>>>>> main:src/lib/Codeblock.svelte
 
 	export let code;
 
@@ -27,7 +21,7 @@
 	<!-- {@html atomOneDark} -->
 </svelte:head>
 
-<div class="text-xs rounded-md overflow-hidden relative my-1">
+<div class="relative my-1 overflow-hidden text-xs rounded-md">
 	<!-- <Highlight {code} /> -->
 	<!-- <Highlight language={javascript} {code} /> -->
 	<button
@@ -39,7 +33,7 @@
 			focusable="false"
 			data-prefix="far"
 			data-icon="clone"
-			class="svg-inline--fa fa-clone fa-w-16 h-full"
+			class="h-full svg-inline--fa fa-clone fa-w-16"
 			role="img"
 			xmlns="http://www.w3.org/2000/svg"
 			viewBox="0 0 512 512"

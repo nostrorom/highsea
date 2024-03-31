@@ -83,7 +83,7 @@ const gethuesWithNames = (colors, reference) =>
 			name: color.name,
 			hue: color.shades.find((shade) => {
 				return shade.id === reference;
-			}).hsl.h
+			}).hsl.h,
 		};
 	});
 
@@ -150,12 +150,12 @@ const generateColor = (colors, shades, reference, hue, name) => {
 			let bottomHsl = {
 				h: bottomColor.shades.find((item) => item.id === shade).hsl.h,
 				s: bottomColor.shades.find((item) => item.id === shade).hsl.s,
-				l: bottomColor.shades.find((item) => item.id === shade).hsl.l
+				l: bottomColor.shades.find((item) => item.id === shade).hsl.l,
 			};
 			let topHsl = {
 				h: topColor.shades.find((item) => item.id === shade).hsl.h,
 				s: topColor.shades.find((item) => item.id === shade).hsl.s,
-				l: topColor.shades.find((item) => item.id === shade).hsl.l
+				l: topColor.shades.find((item) => item.id === shade).hsl.l,
 			};
 			if (topHsl.h < bottomHsl.h) {
 				topHsl.h = topHsl.h + 360;
@@ -164,13 +164,13 @@ const generateColor = (colors, shades, reference, hue, name) => {
 			let hsl = {
 				h: interpolate(bottomHsl.h, topHsl.h, ratio),
 				s: interpolate(bottomHsl.s, topHsl.s, ratio),
-				l: interpolate(bottomHsl.l, topHsl.l, ratio)
+				l: interpolate(bottomHsl.l, topHsl.l, ratio),
 			};
 
 			newColor.shades.push({
 				id: shade,
 				hsl,
-				hex: hsl2hex(hsl)
+				hex: hsl2hex(hsl),
 			});
 		});
 	}
@@ -201,7 +201,7 @@ export const tailwindColors = derived(refShade, (reference) =>
 		});
 		color.refHue = color.shades.find((shade) => shade.id === reference).hsl.h;
 		return color;
-	})
+	}),
 );
 
 export const tailwindGrays = derived(refShade, (reference) =>
@@ -213,13 +213,13 @@ export const tailwindGrays = derived(refShade, (reference) =>
 		});
 		color.refHue = color.shades.find((shade) => shade.id === reference).hsl.h;
 		return color;
-	})
+	}),
 );
 
 export const colorShades = writable(baseShades);
 
 export const allColors = derived([tailwindColors, refShade], ([colors, reference]) =>
-	allHues.map((i) => generateColor(colors, baseShades, reference, i, `color_${i}`))
+	allHues.map((i) => generateColor(colors, baseShades, reference, i, `color_${i}`)),
 );
 
 export const paletteColors = writable([]);
@@ -228,7 +228,7 @@ export const paletteGrays = writable([]);
 export const paletteNames = derived(paletteColors, (colors) => getNames(colors));
 
 export const paletteHues = derived([paletteColors, refShade], ([colors, reference]) =>
-	getHues(colors, reference)
+	getHues(colors, reference),
 );
 
 export const newColor = derived([allColors, newHue, newName], ([colors, hue, name]) => {
