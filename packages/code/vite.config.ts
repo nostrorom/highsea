@@ -1,6 +1,7 @@
 import { resolve, basename, extname } from 'path';
 import { defineConfig } from 'vite';
-import pakageJson from './package.json' assert { type: 'json' };
+import dts from 'vite-plugin-dts';
+import pakageJson from './package.json';
 
 export default defineConfig({
 	resolve: {
@@ -16,4 +17,5 @@ export default defineConfig({
 			fileName: basename(pakageJson.module, extname(pakageJson.module)),
 		},
 	},
+  plugins: [dts()]
 });
