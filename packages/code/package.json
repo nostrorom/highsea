@@ -8,9 +8,11 @@
 		"build": "tsc && vite build"
 	},
 	"devDependencies": {
-		"typescript": "^5.2.2",
-		"vite": "^5.0.8",
-		"vitest": "^1.0.4"
+		"@types/node": "^20.12.2",
+		"typescript": "^5.4.3",
+		"vite": "^5.2.7",
+		"vite-plugin-dts": "^3.8.1",
+		"vitest": "^1.4.0"
 	},
 	"exports": {
 		".": "./dist/index.js",
