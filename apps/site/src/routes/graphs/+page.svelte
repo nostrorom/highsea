@@ -62,7 +62,7 @@
 	}
 
 	function createAllLines(svg: SVG, dimension: Dimension, shadeKey: TW.ShadeKey) {
-		TW.colorKeys.forEach((key) => createLine(svg, hsl[key], dimension, shadeKey));
+		TW.colorKeys.forEach((key) => createLine(svg, hsl.colors[key], dimension, shadeKey));
 	}
 
 	let svg: d3.Selection<d3.BaseType, unknown, HTMLElement, any>;
@@ -83,7 +83,7 @@
 </script>
 
 <div>
-	<div class="bg-blue-900 h-4 mb-12" on:click={() => (d = d === 'S' ? 'L' : 'S')}>
+	<div class="h-4 mb-12 bg-blue-900" on:click={() => (d = d === 'S' ? 'L' : 'S')}>
 		{d}
 	</div>
 

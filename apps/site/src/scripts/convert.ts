@@ -25,4 +25,6 @@ const hsl = keys(hex).reduce(
 	{} as Record<keyof typeof hex, TW.Range<HSL.Code>>,
 );
 
+// TODO to be used with crawler
+
 fs.writeFileSync('./hsl.json', JSON.stringify(hsl));

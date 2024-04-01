@@ -14,7 +14,7 @@
 	/>
 	<meta name="keywords" content="tailwindcss, custom colors, color generator" />
 	<meta name="author" content="Nos Dev" />
-	<script async src="https://www.googletagmanager.com/gtag/js?id=G-F133XSHVT7"></script>
+	<!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-F133XSHVT7"></script> -->
 	<!-- <script>
 		window.dataLayer = window.dataLayer || [];
 		function gtag() {
@@ -26,14 +26,14 @@
 	</script> -->
 </svelte:head>
 
-<div class="bg-neutral-950 dark:bg-neutral-950 h-screen antialiased text-white">
-	<div class="fixed top-0 w-full font-main z-10">
-		<div class="h-12 mx-auto font-main bg-gradient-to-tr from-slate-900 to-blue-900 text-gray-500">
+<div class="h-screen antialiased text-white bg-neutral-950 dark:bg-neutral-950">
+	<div class="fixed top-0 z-10 w-full font-main">
+		<div class="h-12 mx-auto text-gray-500 font-main bg-gradient-to-tr from-slate-900 to-blue-900">
 			<!-- <Header /> --> header
 		</div>
 	</div>
 
-	<main class="w-full h-full font-main pt-12 justify-center flex">
+	<main class="flex justify-center w-full h-full pt-12 font-main">
 		<slot />
 	</main>
 </div>
