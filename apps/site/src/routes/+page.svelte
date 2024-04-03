@@ -1,16 +1,13 @@
 <script lang="ts">
-	import { hex } from '$json';
-	import { keys } from '$utils';
-	import Tint from '$lib/Tint.svelte';
+	import { hsl } from '$json';
+	import { palette } from '$lib/stores/palette';
+
+	import Palette from '$lib/Palette.svelte';
 </script>
 
 <div class="pt-2 space-y-2 overflow-y-auto">
-	{#each keys(hex.colors) as key}
-		<Tint {key} tint={hex.colors[key]}></Tint>
-	{/each}
+	<Palette palette={hsl} />
 </div>
 <div class="pt-2 space-y-2 overflow-y-auto">
-	{#each keys(hex.grays) as key}
-		<Tint {key} tint={hex.grays[key]}></Tint>
-	{/each}
+	<Palette palette={$palette} />
 </div>

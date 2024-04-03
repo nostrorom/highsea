@@ -4,6 +4,25 @@
 	// import '@fontsource/mulish';
 	// import '@fontsource/poppins';
 	// import '@fontsource/jetbrains-mono';
+	import { palette, getBounds, buildTintFromHue, selectedRefs } from '$lib/stores/palette';
+
+	$: selectedRefs.set({
+		colors: [
+			{ tintKey: 'foo', hue: 0 },
+			{ tintKey: 'foo', hue: 86743 },
+			{ tintKey: 'foo', hue: 320 },
+			{ tintKey: 'bar ', hue: 379 },
+			{ tintKey: 'foo', hue: 86243 },
+		],
+		grays: [
+			{ tintKey: 'foo', hue: 0 },
+			{ tintKey: 'foo', hue: 140 },
+			{ tintKey: 'foo', hue: 320 },
+			{ tintKey: 'bar ', hue: 379 },
+			{ tintKey: 'foo', hue: 86243 },
+		],
+	});
+	$: console.log($palette);
 </script>
 
 <svelte:head>
