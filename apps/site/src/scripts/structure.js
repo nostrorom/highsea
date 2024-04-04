@@ -1,6 +1,6 @@
 import { readdirSync, writeFileSync } from 'fs';
 
-const dir = `${process.cwd()}/src/routes/[...docs]/md`;
+const dir = `${process.cwd()}/src/routes/[...docs=docs]/md`;
 
 /**  @param {string} path @param {string} path @returns {import('fs').Dirent[]} */
 const getContents = (path) => {
@@ -43,7 +43,7 @@ const entries = contents
 	.filter(
 		/** @param {import('fs').Dirent} item */ (item) => item.isFile() && item.name.endsWith('.md'),
 	)
-	.map((file) => `${file.path.split(dir)[1]}/${file.name}`);
+	.map((file) => `${file.path.split(dir)[1]}/${file.name}`.replace(/\/0\d-/g, '/').slice(1, -3));
 
 writeFileSync(`${dir}/structure.json`, JSON.stringify(structure, null, '\t'));
 writeFileSync(`${dir}/entries.json`, JSON.stringify(entries, null, '\t'));
