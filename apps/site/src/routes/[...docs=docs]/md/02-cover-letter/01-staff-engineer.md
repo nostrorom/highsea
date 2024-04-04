@@ -21,18 +21,20 @@ Probably the most thrilling aspect of software development are the infinite lear
 
 In particular I have a fondness for Svelte, Tailwind and Rust. I adopted Tailwind since v2.something, and it has always made me want to tinker with. Very soon after I have started working on an app called highsea (hehehe) to have more flexibility - as many side-projects it has remained for personal use and not (yet) taken off to conquer the world.
 
-I have revived it these past days, as it is relevant to this open position. The UI is very much so-so (alright, downright ugly - but my focus was on functionality), but the key ideas are:
+I have revived it these past days, as it is relevant to this open position. The UI is very much so-so, but the key ideas are:
 
 - automate color range creation
 - improve `markdown` integration
 
 ### Interesting projects you’ve worked on, especially things that are relevant to the work we do here.
 
-Well, **highsea** is the most relevant, discussed more in details here. I started it years ago whn I read _bad news — color is complicated and to get the absolute best results we picked all of Tailwind’s default colors by hand_ and thought _challenge accepted_.
+Well, **highsea** is the most relevant. I started it years ago whn I read _bad news — color is complicated and to get the absolute best results we picked all of Tailwind’s default colors by hand_ and thought _challenge accepted_.
 
 There are two key aspects:
 
 #### Color Palette Generator
+
+The functional version is the [old one](https://highsea.vercel.app/) currently being rewritten with better code but the same goal.
 
 The idea is to enable people to fill the gaps in the color range (eg, more shades of green), while integrating seamlessly with the Tailwind range. Right now this is done by finding the `H` values of the neighbouring tailwind, then interpolating the `S` and `L` for the rest of the range.
 
