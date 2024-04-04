@@ -76,6 +76,8 @@ export default {
 };
 ```
 
+Magic happens [here](https://github.com/nostrorom/highsea/blob/dev/apps/site/src/routes/%5B...docs%3Ddocs%5D/%2Bpage.server.ts) and [here](https://github.com/nostrorom/highsea/blob/dev/apps/site/src/styles/md.ts)
+
 #### Other projects
 
 Other than that, I have been working for the past two years at [radiofrance](https://www.radiofrance.fr/), to rewrite from scratch the audio player. A splendid project, having fun with a lot of modern tools (Svelte, Vite, Typescript, GraphQL, Turborepo, Changesets, GitlabCI), working on a very high volume product (millions of users) with a focus on lightness, robustness and speed. It's a great working environment, with an emphasis on experimentation, thinking and conception.
