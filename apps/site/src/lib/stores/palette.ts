@@ -29,14 +29,12 @@ const getBounds = (hue: number, rangeKey: TW.RangeKey) => {
 		bounds = { low: TWtint, high: TWtint };
 	} else {
 		const diffs = TW.palette[rangeKey].map((h) => h - normalizedHue);
-		console.log(diffs);
 		const tintKeys = {
 			low: hueMapper[rangeKey][normalizedHue + Math.max(...diffs.filter((diff) => diff < 0))],
 			high:
 				hueMapper[rangeKey][normalizedHue + Math.min(...diffs.filter((diff) => diff > 0))] ??
 				hueMapper[rangeKey][0],
 		};
-		console.log(tintKeys);
 		bounds = {
 			low: {
 				tintKey: tintKeys.low,

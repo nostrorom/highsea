@@ -9,7 +9,7 @@
 
 	type Dimension = Omit<'H' | 'S' | 'L', 'H'>;
 
-	let d: Dimension = 'H';
+	let d: Dimension = 'S';
 
 	type Point = [number, number];
 
@@ -86,7 +86,6 @@
 	<div class="h-4 mb-12 bg-blue-900" on:click={() => (d = d === 'S' ? 'L' : 'S')}>
 		{d}
 	</div>
-
 	<div>
 		<svg id="hueGraph" width="960" height="500"></svg>
 	</div>

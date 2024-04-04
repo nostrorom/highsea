@@ -10,3 +10,14 @@
 		<div style="display: contents">%sveltekit.body%</div>
 	</body>
 </html>
+
+<script>
+	if (
+		localStorage?.theme === 'dark' ||
+		(!('theme' in localStorage) && window?.matchMedia('(prefers-color-scheme: dark)').matches)
+	) {
+		document?.documentElement?.classList.add('darkMode', 'dark');
+	} else {
+		document?.documentElement?.classList.remove('darkMode', 'dark');
+	}
+</script>

@@ -8,15 +8,20 @@
 	export let tint: TW.Tint<HSL.Code>;
 </script>
 
-<div class="flex px-4 space-x-2">
-	<div class="w-12 my-auto text-xs text-right">
-		<div>
+<div class="flex space-x-2 text-xs">
+	<h6 class="pr-2 text-right w-14">
+		<div class="font-bold">
 			{tintKey}
 		</div>
-		<div class="opacity-50">{tint[500].H}</div>
+		<div class="text-xs opacity-50 monospace">{tint[500].H}</div>
+	</h6>
+	<div class="grid grid-cols-11 gap-x-2">
+		{#each keys(tint) as shade}
+			{@const hsl = tint[shade]}
+			<div class="h-10 rounded-md w-14" style={`background:hsl(${hsl.H} ${hsl.S} ${hsl.L})`}></div>
+		{/each}
 	</div>
-	{#each keys(tint) as shade}
-		{@const hsl = tint[shade]}
-		<div class="w-12 h-12 rounded-md" style={`background:hsl(${hsl.H} ${hsl.S} ${hsl.L})`}></div>
-	{/each}
+	<div class="pr-2 text-right w-14">
+		{tintKey}
+	</div>
 </div>
