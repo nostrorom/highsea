@@ -39,4 +39,11 @@ const structure = folders.reduce(
 	{},
 );
 
+const entries = contents
+	.filter(
+		/** @param {import('fs').Dirent} item */ (item) => item.isFile() && item.name.endsWith('.md'),
+	)
+	.map((file) => `${file.path.split(dir)[1]}/${file.name}`);
+
 writeFileSync(`${dir}/structure.json`, JSON.stringify(structure, null, '\t'));
+writeFileSync(`${dir}/entries.json`, JSON.stringify(entries, null, '\t'));

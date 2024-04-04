@@ -4,6 +4,8 @@ import render from './md/render';
 import structure from './md/structure.json';
 import { keys } from '$utils';
 
+export { default as entries } from './md/entries.json';
+
 export const prerender = true;
 
 export const load = async ({ params }) => {
