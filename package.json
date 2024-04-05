@@ -4,23 +4,24 @@
 	"private": true,
 	"scripts": {
 		"dev": "FORCE_COLOR=1 turbo dev",
+		"prebuild": "FORCE_COLOR=1 turbo prebuild",
 		"build": "FORCE_COLOR=1 turbo build",
 		"format": "FORCE_COLOR=1 turbo format",
 		"lint": "FORCE_COLOR=1 turbo lint",
 		"prepare": "bash scripts/prepare.sh"
 	},
 	"devDependencies": {
-		"@typescript-eslint/eslint-plugin": "^6.4.1",
-		"@typescript-eslint/parser": "^6.4.1",
-		"eslint": "^8.48.0",
-		"eslint-config-prettier": "^9.0.0",
-		"eslint-plugin-svelte": "^2.33.0",
-		"husky": "^8.0.3",
-		"lint-staged": "^14.0.1",
-		"prettier": "^3.0.2",
-		"prettier-plugin-svelte": "^3.0.3",
-		"syncpack": "^11.2.1",
-		"turbo": "^1.10.13"
+		"@typescript-eslint/eslint-plugin": "^7.5.0",
+		"@typescript-eslint/parser": "^7.5.0",
+		"eslint": "^8.57.0",
+		"eslint-config-prettier": "^9.1.0",
+		"eslint-plugin-svelte": "^2.35.1",
+		"husky": "^9.0.11",
+		"lint-staged": "^15.2.2",
+		"prettier": "^3.2.5",
+		"prettier-plugin-svelte": "^3.2.2",
+		"syncpack": "^12.3.0",
+		"turbo": "^1.13.2"
 	},
 	"type": "module"
 }

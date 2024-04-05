@@ -6,7 +6,7 @@ import { keys } from '$utils';
 
 import _entries from './md/entries.json';
 
-export const entries = () => ({ docs: _entries });
+export const entries = () => _entries.map((docs) => ({ docs }));
 
 export const prerender = true;
 
