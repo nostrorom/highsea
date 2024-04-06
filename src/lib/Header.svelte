@@ -23,13 +23,13 @@
 	};
 </script>
 
-<header class="flex h-full w-full lg:w-4/6 mx-auto justify-between items-center">
-	<div class="h-8 p-1 flex items-center space-x-2 px-2 text-white">
+<header class="flex items-center justify-between w-full h-full mx-auto lg:w-4/6">
+	<div class="flex items-center h-8 p-1 px-2 space-x-2 text-white">
 		<svg
 			xmlns="http://www.w3.org/2000/svg"
 			viewBox="0 0 38.3 25"
 			xml:space="preserve"
-			class="fill-current h-full"
+			class="h-full fill-current"
 		>
 			<path
 				fill="currentColor"
@@ -43,16 +43,30 @@
 		c1.6,0,3.1-0.8,4.5-2.3C36,14,36,13.4,36,12.8C35.9,6,32.6,1.7,25.8,0C29.2,2.6,30.4,5.5,29.6,8.9z"
 			/>
 		</svg>
-		<p class="text-slate-300 text-xl font-logo">highsea</p>
+		<p class="text-xl text-slate-300 font-logo">highsea</p>
 	</div>
 
-	<div class="h-full flex">
-		<nav class="h-full text-slate-300 lowercase">
+	<div class="flex h-full">
+		<nav class="h-full lowercase text-slate-300">
 			<ul class="flex h-full">
+				<li class="h-full">
+					<a
+						class=""
+						sveltekit:prefetch
+						href="https://highsea-git-beta-nostroroms-projects.vercel.app"
+						target="_blank"
+					>
+						<div
+							class="flex items-center h-full px-3 border-t border-opacity-0 border-amber-500 hover:border-opacity-100"
+						>
+							v2 (beta)
+						</div>
+					</a>
+				</li>
 				<li class="h-full">
 					<a class="" sveltekit:prefetch href="/">
 						<div
-							class="h-full px-3 flex items-center border-t border-amber-500 border-opacity-0 hover:border-opacity-100"
+							class="flex items-center h-full px-3 border-t border-opacity-0 border-amber-500 hover:border-opacity-100"
 							class:border-opacity-100={$page.path === '/'}
 						>
 							Colors
@@ -62,7 +76,7 @@
 				<li class="h-full">
 					<a class="" sveltekit:prefetch href="/docs">
 						<div
-							class="h-full px-3 flex items-center border-t border-amber-500 border-opacity-0 hover:border-opacity-100"
+							class="flex items-center h-full px-3 border-t border-opacity-0 border-amber-500 hover:border-opacity-100"
 							class:border-opacity-100={$page.path === '/docs'}
 						>
 							Docs
@@ -74,14 +88,14 @@
 
 		<button
 			on:click={switchDarkmode}
-			class="h-full w-10 text-slate-400 border-t border-amber-500 border-opacity-0 hover:border-opacity-100 px-2 flex items-center justify-center"
+			class="flex items-center justify-center w-10 h-full px-2 border-t border-opacity-0 text-slate-400 border-amber-500 hover:border-opacity-100"
 		>
 			<Icon icon="darkmode" size="h-4" />
 		</button>
 		<div class="bg-slate-600 00 w-0.5 m-2" />
 
 		<a
-			class="h-full w-10 text-slate-400 border-t border-amber-500 border-opacity-0 hover:border-opacity-100 px-2 flex items-center justify-center"
+			class="flex items-center justify-center w-10 h-full px-2 border-t border-opacity-0 text-slate-400 border-amber-500 hover:border-opacity-100"
 			href="https://github.com/Nostrorom/highsea"
 			target="_blank"
 		>
@@ -89,7 +103,7 @@
 		</a>
 
 		<a
-			class="h-full w-10 text-slate-400 border-t border-amber-500 border-opacity-0 hover:border-opacity-100 px-2 flex items-center justify-center"
+			class="flex items-center justify-center w-10 h-full px-2 border-t border-opacity-0 text-slate-400 border-amber-500 hover:border-opacity-100"
 			href="https://www.patreon.com/nosdev"
 			target="_blank"
 		>
