@@ -6,6 +6,8 @@
 	// import '@fontsource/jetbrains-mono';
 	import { palette, selectedRefs } from '$lib/stores/palette';
 
+	import Logo from '$lib/Logo.svelte';
+
 	$: selectedRefs.set({
 		colors: [
 			{ tintKey: 'foo', hue: 0 },
@@ -39,11 +41,14 @@
 >
 	<main>
 		<div class="sticky top-0 z-10 w-full font-main">
-			<div class="h-12 mx-auto font-main">
-				<!-- <Header /> --> highsea
+			<div class="flex items-center h-12 mx-auto space-x-1 font-semibold tracking-wide font-main">
+				<div class="text-blue-700">
+					<Logo size="h-5" />
+				</div>
+				<div>highsea</div>
 			</div>
 		</div>
-		<aside class="fixed z-30 w-1/6 h-full overflow-y-auto bg-neutral-800 left-24"></aside>
+		<aside class="fixed z-30 w-1/6 h-full overflow-y-auto bg-neutral-800 left-24" />
 
 		<main class="w-full max-w-4xl mx-auto font-main">
 			<slot />
