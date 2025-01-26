@@ -8,7 +8,7 @@ module.exports = {
 		fontFamily: {
 			mono: 'JetBrains Mono',
 			main: 'Mulish',
-			logo: 'Poppins'
-		}
-	}
+			logo: 'Poppins',
+		},
+	},
 };

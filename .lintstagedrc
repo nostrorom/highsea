@@ -1,0 +1,5 @@
+{
+	"**/*.{json,html,css,sass}": ["prettier --check"],
+	"**/*.{svelte,ts,js}": ["prettier --check", "eslint"],
+	"**/*.{svelte,css}": ["stylelint"]
+}
